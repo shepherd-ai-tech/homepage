@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>岐阜採用のミカタ | 株式会社Shepherd</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@800&family=Zen+Kaku+Gothic+New:wght@500;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- 変数定義 --- */
+        :root {
+            --primary-color: #e67e22; /* 活気あるオレンジ */
+            --primary-dark: #d35400;
+            --secondary-color: #27ae60; /* 岐阜の緑 */
+            --text-main: #333333;
+            --bg-light: #f9f9f9;
+            --bg-accent: #fffaf0; /* 薄いオレンジ背景 */
+            --font-title: 'Zen Kaku Gothic New', sans-serif;
+            --font-mincho: 'Shippori Mincho', serif;
+            --font-body: 'Noto Sans JP', sans-serif;
+            --header-height: 70px;
+        }
+
+        /* --- リセット & 基本設定 --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: var(--font-body);
+            color: var(--text-main);
+            background-color: #fff;
+            line-height: 1.8;
+            overflow-x: hidden;
+            -webkit-text-size-adjust: 100%;
+        }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        img { width: 100%; height: auto; display: block; }
+        li { list-style: none; }
+
+        /* --- ユーティリティ --- */
+        .pc-only { display: block; }
+        .sp-only { display: none; }
+        .text-center { text-align: center; }
+        .text-primary { color: var(--primary-color); }
+        .text-bold { font-weight: bold; }
+        .bg-light { background-color: var(--bg-light); }
+        .bg-accent { background-color: var(--bg-accent); }
+
+        @media (max-width: 768px) {
+            .pc-only { display: none; }
+            .sp-only { display: block; }
+        }
+
+        /* --- 共通レイアウト --- */
+        .container { width: 90%; max-width: 1000px; margin: 0 auto; }
+        .section-padding { padding: 80px 0; }
+        @media (max-width: 768px) {
+            .container { width: 92%; }
+            .section-padding { padding: 60px 0; }
+        }
+
+        /* 見出しデザイン */
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-family: var(--font-title);
+            margin-bottom: 50px;
+            color: var(--text-main);
+            position: relative;
+            padding-bottom: 20px;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 50%; transform: translateX(-50%);
+            width: 60px; height: 4px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+        @media (max-width: 768px) {
+            .section-title { font-size: 1.6rem; margin-bottom: 30px; }
+        }
+
+        /* --- ボタンデザイン --- */
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: #fff;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(230, 126, 34, 0.4);
+            text-align: center;
+            letter-spacing: 0.05em;
+            width: fit-content;
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(230, 126, 34, 0.6);
+        }
+        .btn-full { width: 100%; max-width: 400px; }
+
+        /* トップ画面用の白ふち付きスタイル */
+        .btn-hero {
+            border: 4px solid #fff;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .btn { width: 100%; padding: 20px; font-size: 1.1rem; }
+        }
+
+        /* --- ヘッダー --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: var(--header-height);
+            background: rgba(255, 255, 255, 0.95);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+        }
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .logo {
+            font-family: var(--font-title);
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+        }
+        .logo span { color: var(--primary-color); margin-right: 5px; font-size: 1.5rem; }
+        nav ul { display: flex; gap: 20px; }
+        nav li a { font-weight: 700; font-size: 0.9rem; }
+        @media (max-width: 768px) {
+            nav { display: none; }
+            .logo { font-size: 1.1rem; }
+        }
+
+        /* --- ヒーローセクション --- */
+        .hero {
+            position: relative;
+            min-height: 100vh; 
+            padding-top: var(--header-height);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background-color: #333;
+        }
+        .hero-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://i.gyazo.com/f79997d0a85c4e104cca4f334a4a229e.png') center/cover no-repeat;
+            opacity: 0.7;
+            animation: bgZoom 20s infinite alternate;
+        }
+        @keyframes bgZoom { 0% { transform: scale(1); } 100% { transform: scale(1.1); } }
+
+        /* スマホ向けの背景調整 */
+        @media (max-width: 768px) {
+            .hero-bg {
+                background-position: center 30%; 
+            }
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 60%, rgba(255,255,255,0.4) 100%);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 1100px;
+            padding: 0 5%;
+            margin-top: -30px;
+        }
+
+        /* バッジデザイン */
+        .hero-badge-wrapper {
+            margin-bottom: 50px;
+            opacity: 0; animation: popIn 0.8s forwards 0.2s;
+        }
+        .hero-badge {
+            display: inline-block;
+            background-color: #ea7a1e;
+            color: #fff;
+            font-family: var(--font-title);
+            font-weight: 900;
+            font-size: 2.2rem;
+            padding: 10px 40px;
+            border: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            transform: rotate(-2deg);
+            letter-spacing: 0.05em;
+        }
+
+        @media (max-width: 768px) {
+            .hero-badge-wrapper {
+                text-align: center;
+                margin-top: 20px;
+                margin-bottom: 40px; 
+            }
+            .hero-badge {
+                font-size: 1.1rem;
+                padding: 10px 20px;
+                white-space: nowrap;
+            }
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.8) rotate(-2deg); opacity: 0; }
+            to { transform: scale(1) rotate(-2deg); opacity: 1; }
+        }
+
+        .hero h1 {
+            color: #222;
+            line-height: 1.3;
+            margin-bottom: 20px;
+            font-size: 3rem;
+            letter-spacing: -0.05em;
+        }
+
+        .hero-mincho {
+            font-family: var(--font-mincho);
+            font-weight: 800;
+        }
+        .hero-gothic {
+            font-family: var(--font-title);
+            font-weight: 900;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        .highlight-marker {
+            background: linear-gradient(transparent 60%, #ffd700 60%);
+            display: inline;
+        }
+
+        .hero-sub {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--primary-dark);
+            margin-bottom: 40px;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content { text-align: center; margin-top: 0; }
+            .hero h1 { 
+                font-size: 1.6rem; 
+                line-height: 1.6; 
+                margin-top: 10px; 
+            }
+            .hero-gothic { margin-top: 5px; }
+            .hero-sub { font-size: 1rem; margin-bottom: 30px; }
+        }
+
+        /* --- セクション1：共感・問題提起 --- */
+        .problem-box {
+            background: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-left: 6px solid var(--primary-color);
+        }
+        
+        .problem-content {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+        .problem-text {
+            flex: 1;
+        }
+        .problem-img {
+            flex: 1;
+            max-width: 450px;
+        }
+        .problem-img img {
+            border-radius: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .problem-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .problem-img {
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+
+        .problem-lead {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        .highlight-bg {
+            background: #fffbe6;
+            font-weight: bold;
+            padding: 0 5px;
+        }
+
+        /* --- セクション2：解決策 --- */
+        .solution-row {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+        @media (max-width: 768px) {
+            .solution-row { flex-direction: column; }
+        }
+        .solution-img {
+            flex: 1;
+            box-shadow: 15px 15px 0 var(--bg-accent);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .solution-text { flex: 1; }
+        .solution-msg {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+            font-family: var(--font-title);
+        }
+
+        /* --- セクション3：サービス（料金表・チケット） --- */
+        .price-table, .ticket-table, .plan-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .price-table th, .price-table td,
+        .ticket-table th, .ticket-table td,
+        .plan-table th, .plan-table td {
+            padding: 15px;
+            border: 1px solid #eee;
+            text-align: left;
+        }
+        .price-table th { background: var(--primary-color); color: #fff; text-align: center; }
+        .price-table td { text-align: center; font-weight: bold; }
+        .ticket-table th { background: #f4f4f4; width: 30%; font-weight: bold; }
+        .plan-card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 2px solid #eee;
+        }
+        .plan-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+        @media (max-width: 768px) {
+            .ticket-table th, .ticket-table td { display: block; width: 100%; }
+            .ticket-table th { background: #eef; }
+            .price-table th, .price-table td { font-size: 0.9rem; padding: 10px 5px; }
+        }
+
+        /* --- セクション4：選ばれる理由 --- */
+        .reason-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .reason-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid #eee;
+            transition: 0.3s;
+        }
+        .reason-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            border-color: var(--primary-color);
+        }
+        .reason-num {
+            display: inline-block;
+            background: var(--primary-color);
+            color: #fff;
+            width: 40px; height: 40px;
+            line-height: 40px;
+            border-radius: 50%;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .reason-title { font-weight: bold; font-size: 1.1rem; margin-bottom: 10px; }
+        
+        /* ★画像3をカードの高さに合わせるためのスタイル★ */
+        .reason-image-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* カードと同じ高さを確保するために100%を指定 */
+            height: 100%;
+        }
+        .reason-image-container img {
+            width: 100%;
+            height: 100%; /* コンテナいっぱいに広げる */
+            object-fit: cover; /* 比率を保ちつつトリミングして埋める */
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* --- セクション5：ご利用の流れ --- */
+        .flow-step {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            align-items: flex-start;
+        }
+        .step-num {
+            background: var(--primary-dark);
+            color: #fff;
+            padding: 5px 15px;
+            font-weight: bold;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+        .step-content h3 { margin-bottom: 10px; }
+
+        /* --- セクション6：代表挨拶 --- */
+        .rep-container {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+        }
+        @media (max-width: 768px) {
+            .rep-container { flex-direction: column; }
+        }
+        .rep-img-box { flex: 0 0 300px; width: 100%; }
+        .rep-img-box img { border-radius: 10px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .rep-content { flex: 1; }
+        .rep-catch {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: var(--text-main);
+            font-family: var(--font-title);
+        }
+
+        /* --- セクション7：FAQ --- */
+        .faq-item {
+            background: #fff;
+            margin-bottom: 15px;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #eee;
+        }
+        .faq-q {
+            font-weight: bold;
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .faq-q::before { content: 'Q.'; margin-right: 10px; font-size: 1.2rem; }
+        .faq-a { padding-left: 30px; }
+
+        /* --- 最終CTA --- */
+        .final-cta {
+            background: #f4f4f4;
+            text-align: center;
+            padding: 80px 20px;
+        }
+        .final-msg {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 40px;
+            color: var(--primary-dark);
+        }
+
+        /* --- アニメーション --- */
+        .anim-up { opacity: 0; transform: translateY(20px); transition: 0.8s; }
+        .anim-up.active { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body>
+
+    <!-- ヘッダー -->
+    <header>
+        <div class="header-inner">
+            <div class="logo"><span>●</span>岐阜採用のミカタ</div>
+            <nav>
+                <ul>
+                    <li><a href="#service">サービス</a></li>
+                    <li><a href="#plan">料金</a></li>
+                    <li><a href="#representative">代表挨拶</a></li>
+                    <li><a href="#contact" class="text-primary">無料相談</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ファーストビュー -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            
+            <div class="hero-badge-wrapper">
+                <div class="hero-badge">岐阜県限定・中小企業専門</div>
+            </div>
+
+            <h1 class="anim-up">
+                <span class="hero-mincho">求人を出しても応募ゼロ…</span><br class="pc-only">
+                <span class="hero-gothic">
+                    その原因、<br class="sp-only">
+                    <span class="highlight-marker">広告費ではありません。</span>
+                </span>
+            </h1>
+            
+            <p class="hero-sub anim-up">
+                月10万円から、採用のプロが"まるっと"サポート。<br>
+                求人票・SNS・面接対応まで、全部お任せください。
+            </p>
+
+            <div class="anim-up">
+                <a href="#contact" class="btn btn-full btn-hero">まずは無料相談する</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- セクション1：共感・問題提起 -->
+    <section class="section-padding bg-light">
+        <div class="container anim-up">
+            <h2 class="section-title">普通に求人を出しても、<br class="sp-only">もう応募は来ない時代です。</h2>
+            
+            <div class="problem-box">
+                <div class="problem-content">
+                    <div class="problem-text">
+                        <p class="problem-lead">
+                            「広告を出しても応募がない」<br>
+                            「すぐに辞めてしまう」<br>
+                            「ウチには良い人材は来ないと諦めている」
+                        </p>
+                        <p>
+                            もし一つでも当てはまるなら、それはあなたの会社の魅力がないからではありません。<br>
+                            実は、<span class="highlight-bg">良い会社ほど、その良さが"伝わっていない"</span>のです。<br><br>
+                            大企業は今、動画やSNSを駆使した「採用マーケティング」で求職者の心を掴んでいます。<br>
+                            一方、中小企業はテンプレートの求人票に自社の想いを押し込めるしかなく、埋もれてしまっています。<br>
+                            このままでは、優秀な人材はすべて"大きいところ"に持っていかれてしまいます。
+                        </p>
+                    </div>
+                    <div class="problem-img">
+                        <img src="https://i.gyazo.com/f2da1c0c6df0d4a251205700ab4cb824.png" alt="悩むビジネスマン">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- セクション2：解決策 -->
+    <section class="section-padding">
+        <div class="container">
+            <h2 class="section-title">採用を変えるのは、<br>"広告費"ではなく"言葉"の力。</h2>
+            
+            <div class="solution-row anim-up">
+                <div class="solution-text">
+                    <p class="solution-msg">
+                        "スペック"ではなく<br>
+                        "ストーリー"で選ばれる時代です。
+                    </p>
+                    <p>
+                        はじめまして。岐阜県可児市在住の伊藤です。<br><br>
+                        「人が集まらない」という中小企業の切実な声を聞くたび、何とかできないかと採用マーケティングの研究を始めました。<br>
+                        そして、<strong class="text-primary">リクルートでMVPを受賞した求人広告のプロライター</strong>がチームに加わったことで、私たちの支援は進化しました。<br><br>
+                        私たち「岐阜採用のミカタ」は、テンプレートの使い回しはしません。<br>
+                        御社の想い、働く人の魅力を丁寧に掘り起こし、求職者の心に届く言葉に変換します。<br><br>
+                        「知名度がなくても、応募者は増やせる」<br>
+                        これが、私たちが岐阜の経営者にお届けしたい"採用の新常識"です。
+                    </p>
+                </div>
+                <div class="solution-img">
+                    <img src="https://i.gyazo.com/a0d60932494345a28981785e3c1e5394.png" alt="採用戦略ミーティング">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- セクション3：サービス（料金・チケット） -->
+    <section id="service" class="section-padding bg-accent">
+        <div class="container anim-up">
+            <h2 class="section-title">月10万円から。<br>求人票もSNSも、まるっとお任せ。</h2>
+            <p class="text-center" style="margin-bottom: 40px;">
+                年間契約のチケット制で、必要なときに必要なサポートを。<br>
+                <strong>使わなかったチケットは繰り越しOK</strong>なので無駄がありません。
+            </p>
+
+            <!-- 料金プラン -->
+            <div id="plan" style="overflow-x:auto;">
+                <table class="price-table">
+                    <thead>
+                        <tr>
+                            <th>プラン</th>
+                            <th>月額料金（税別）</th>
+                            <th>毎月届くチケット</th>
+                            <th>年間チケット総数</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>ライトプラン</strong></td>
+                            <td>10万円</td>
+                            <td>1枚</td>
+                            <td>12枚</td>
+                        </tr>
+                        <tr>
+                            <td><strong>スタンダードプラン</strong></td>
+                            <td>20万円</td>
+                            <td>2枚</td>
+                            <td>24枚</td>
+                        </tr>
+                        <tr>
+                            <td><strong>プレミアムプラン</strong></td>
+                            <td>30万円</td>
+                            <td>3枚</td>
+                            <td>36枚</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- チケット内容 -->
+            <h3 style="margin-bottom: 20px; font-size: 1.2rem; border-left: 4px solid var(--primary-color); padding-left: 10px;">チケットで依頼できるサービス一覧</h3>
+            <div style="overflow-x:auto;">
+                <table class="ticket-table">
+                    <tr>
+                        <th>求人票リライト (1枚)</th>
+                        <td>現在の求人票を「求職者目線」で完全に書き換え。応募したくなる原稿へ。</td>
+                    </tr>
+                    <tr>
+                        <th>Note記事執筆 (1枚)</th>
+                        <td>御社の魅力やストーリーを記事化（2記事）。求職者との接点を増やします。</td>
+                    </tr>
+                    <tr>
+                        <th>Instagram投稿 (1枚)</th>
+                        <td>会社の日常を発信（フィード4つ or リール2つ）。若年層へのリーチを強化。</td>
+                    </tr>
+                    <tr>
+                        <th>Indeed企業ページ充実化 (1枚)</th>
+                        <td>検索で見つかりやすく、信頼される企業ページに整備します。</td>
+                    </tr>
+                    <tr>
+                        <th>日程調整・連絡代行 (1枚)</th>
+                        <td>応募者への返信、日程調整を2ヶ月間代行。取りこぼしを防ぎます。</td>
+                    </tr>
+                    <tr>
+                        <th>AirWork LP作成 (2枚)</th>
+                        <td>求職者の心を掴む専用ランディングページを制作します。</td>
+                    </tr>
+                    <tr>
+                        <th>採用面接代行 (3枚)</th>
+                        <td>プロが一次面接を担当（3ヶ月・10名まで）。ミスマッチを防ぎます。</td>
+                    </tr>
+                    <tr>
+                        <th>ダイレクト採用代行 (3枚)</th>
+                        <td>優秀な人材に直接アプローチ（3ヶ月・30名）。攻めの採用へ。</td>
+                    </tr>
+                    <tr>
+                        <th>YouTube採用動画 (6枚)</th>
+                        <td>撮影込み・約10分×2本。御社の魅力を映像化します。</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- 活用イメージ -->
+            <div style="margin-top: 50px;">
+                <div class="plan-card">
+                    <h3>活用例：ライトプラン（年間12枚）</h3>
+                    <p style="margin-bottom: 15px;">
+                        <strong>【1年後の成果】</strong> 求人票が4回ブラッシュアップされ、Note記事4本・Instagram投稿16件が蓄積。<br>
+                        「この会社、なんか良さそう」と思わせる"採用資産"が積み上がります。
+                    </p>
+                    <ul style="font-size: 0.9rem; background: #f9f9f9; padding: 15px;">
+                        <li>春：求人票リライト（1枚）</li>
+                        <li>夏：Instagram投稿（1枚）</li>
+                        <li>秋：Note記事執筆（1枚）</li>
+                        <li>冬：Indeedページ充実化（1枚）など</li>
+                    </ul>
+                </div>
+
+                <div class="plan-card">
+                    <h3>活用例：スタンダードプラン（年間24枚）</h3>
+                    <p style="margin-bottom: 15px;">
+                        <strong>【1年後の成果】</strong> SNSとNoteで継続発信しながら、専用LPも完成。<br>
+                        急な欠員にはチケットを集中投下して「求人票＋応募対応代行」で即対応。攻めと守りを両立できます。
+                    </p>
+                </div>
+            </div>
+
+            <!-- メリット -->
+            <div style="background: #fff; padding: 30px; border-radius: 10px; border: 1px solid #ddd;">
+                <h4 style="color: var(--primary-color); margin-bottom: 15px;">チケット制のメリット</h4>
+                <ul style="line-height: 1.8;">
+                    <li>✅ <strong>状況に応じて柔軟に使える：</strong>「今月は求人票」「来月はSNS」など自由自在。</li>
+                    <li>✅ <strong>繰り越しOK：</strong>採用ニーズが少ない月は貯めて、繁忙期にまとめて使えます。</li>
+                    <li>✅ <strong>採用資産が積み上がる：</strong>コツコツ発信を続けることで、採用力が資産になります。</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- セクション4：選ばれる理由 -->
+    <section class="section-padding">
+        <div class="container anim-up">
+            <h2 class="section-title">なぜ、「岐阜採用のミカタ」が<br class="sp-only">選ばれるのか？</h2>
+            
+            <div class="reason-grid">
+                <div class="reason-card">
+                    <span class="reason-num">1</span>
+                    <div class="reason-title">リクルートMVP監修</div>
+                    <p>求人広告のプロが「伝わる言葉」を設計。心を動かす原稿を作成します。</p>
+                </div>
+                <div class="reason-card">
+                    <span class="reason-num">2</span>
+                    <div class="reason-title">成果が出なければ全額返金</div>
+                    <p>自信があるからこそ、結果にコミット。リスクゼロで始められます。</p>
+                </div>
+                <div class="reason-card">
+                    <span class="reason-num">3</span>
+                    <div class="reason-title">岐阜県の中小企業に特化</div>
+                    <p>可児・多治見・美濃加茂を中心に、地域の事情を熟知したチームが対応します。</p>
+                </div>
+                <div class="reason-card">
+                    <span class="reason-num">4</span>
+                    <div class="reason-title">採用業務を"まるっと"代行</div>
+                    <p>求人票からSNS、面接代行まで。忙しい担当者の負担を大幅に軽減します。</p>
+                </div>
+                
+                <!-- 画像3：高さ調整済み -->
+                <div class="reason-image-container">
+                    <img src="https://i.gyazo.com/933beeac8cf1884ff52d395e377fd54a.png" alt="岐阜採用のミカタ イメージ">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- セクション5：ご利用の流れ -->
+    <section class="section-padding bg-light">
+        <div class="container anim-up">
+            <h2 class="section-title">まずは60分、<br>お話を聞かせてください。</h2>
+            
+            <div style="max-width: 700px; margin: 0 auto;">
+                <div class="flow-step">
+                    <div class="step-num">STEP 1</div>
+                    <div class="step-content">
+                        <h3>無料相談のお申し込み</h3>
+                        <p>下記のボタンから、ご都合の良い日時をお選びください。オンライン（Zoom）または対面で対応可能です。</p>
+                    </div>
+                </div>
+                <div class="flow-step">
+                    <div class="step-num">STEP 2</div>
+                    <div class="step-content">
+                        <h3>60分の無料面談</h3>
+                        <p>お悩みをお聞かせください。その場で「こうすれば応募が増える」というヒントを必ずお持ち帰りいただけます。無理な営業はいたしません。</p>
+                    </div>
+                </div>
+                <div class="text-center" style="margin-top: 40px;">
+                    <a href="#contact" class="btn">60分の無料相談を予約する</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- セクション6：代表挨拶 -->
+    <section id="representative" class="section-padding">
+        <div class="container anim-up">
+            <h2 class="section-title">代表挨拶</h2>
+            
+            <div class="rep-container">
+                <div class="rep-img-box">
+                    <img src="https://i.gyazo.com/01532657b21aa28f2f25f3692f273e15.png" alt="代表 伊藤寛">
+                </div>
+                <div class="rep-content">
+                    <div class="rep-catch">
+                        企業は、人なり。
+                    </div>
+                    <p>
+                        はじめまして。「岐阜採用のミカタ」代表の伊藤です。<br>
+                        岐阜県可児市で生まれ育ち、この地域の企業様に育てていただきました。<br><br>
+                        <strong>「企業は、人なり。」</strong><br>
+                        どれだけ優れた商品があっても、それを動かすのは"人"です。<br>
+                        しかし現実には、「良い人材が来ない」と悩む企業がたくさんあります。<br><br>
+                        私は知っています。岐阜には素晴らしい会社がたくさんあることを。<br>
+                        ただ、その"良さ"が伝わっていないだけなのです。<br><br>
+                        私たちの仕事は、御社の魅力を「伝わる言葉」に変え、「この会社で働きたい」という出会いを生み出すことです。<br>
+                        採用を諦める必要はありません。<br>
+                        一社でも多くの岐阜の企業が輝けるよう、全力でサポートします。<br><br>
+                        まずは60分、お話を聞かせてください。<br>
+                        あなたの会社の"選ばれる理由"を、一緒に見つけましょう。
+                    </p>
+                    <p style="text-align: right; margin-top: 20px; font-weight: bold;">
+                        株式会社Shepherd<br>代表 伊藤 寛
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- セクション7：FAQ -->
+    <section class="section-padding bg-light">
+        <div class="container anim-up">
+            <h2 class="section-title">よくある質問</h2>
+            
+            <div class="faq-item">
+                <div class="faq-q">本当に成果が出なければ返金されますか？</div>
+                <div class="faq-a">はい。契約期間内に一定の成果が出なかった場合、全額返金いたします。詳細は無料相談時にご説明します。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">小さな会社でも対応してもらえますか？</div>
+                <div class="faq-a">もちろんです。社員1名の会社様から対応可能です。むしろ小さな会社こそ、「伝え方」で大きな差がつきます。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">どのくらいで効果が出ますか？</div>
+                <div class="faq-a">早ければ1週間以内に応募が増え始めますが、業種や地域によります。無料相談時に目安をお伝えします。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">チケットの有効期限はありますか？</div>
+                <div class="faq-a">年間契約期間中は、未使用のチケットを翌月以降に繰り越してご利用いただけます。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">無料相談だけで終わっても大丈夫ですか？</div>
+                <div class="faq-a">はい、大歓迎です。具体的なアドバイスをお持ち帰りいただくだけでも構いません。</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- セクション8：最終CTA -->
+    <section id="contact" class="final-cta">
+        <div class="container anim-up">
+            <h2 style="font-size: 2rem; margin-bottom: 20px;">採用を諦めるか？<br>新しい方法を試すか？</h2>
+            <p style="margin-bottom: 30px;">
+                汗水たらして稼いだお金を、無駄な広告費で溶かす必要はありません。<br>
+                採用を変えるのは、"予算"ではなく"言葉"です。<br><br>
+                <strong>「伝え方が変われば、会社の未来も変わる。」</strong><br>
+                あなたとお会いできるのを楽しみにしています。
+            </p>
+            <a href="#" class="btn btn-full" style="padding: 25px; font-size: 1.3rem;">今すぐ60分の無料相談を予約する</a>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer style="background: #222; color: #888; text-align: center; padding: 40px 0; font-size: 0.9rem;">
+        <div class="container">
+            <p style="color: #fff; font-weight: bold; margin-bottom: 10px;">株式会社Shepherd</p>
+            <p>対応エリア：岐阜県可児市・多治見市・美濃加茂市を中心に、岐阜県内周辺</p>
+            <p style="margin-top: 20px;">&copy; 2023 岐阜採用のミカタ All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // スクロールフェードイン
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting){
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.anim-up').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
