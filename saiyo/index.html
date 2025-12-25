@@ -452,7 +452,16 @@
             .rep-container { flex-direction: column; }
         }
         .rep-img-box { flex: 0 0 300px; width: 100%; }
-        .rep-img-box img { border-radius: 10px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        
+        /* ★画像スタイルを動画にも適用★ */
+        .rep-img-box img, .rep-img-box video {
+            width: 100%;
+            height: auto;
+            border-radius: 10px; 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1); 
+            display: block;
+        }
+        
         .rep-content { flex: 1; }
         .rep-catch {
             font-size: 1.8rem;
@@ -539,7 +548,6 @@
             </p>
 
             <div class="anim-up">
-                <!-- 修正：リンク先変更 -->
                 <a href="https://app.aitemasu.me/u/info278/gifusaiyo" class="btn btn-full btn-hero">まずは無料相談する</a>
             </div>
         </div>
@@ -780,21 +788,20 @@
                     </div>
                 </div>
                 <div class="text-center" style="margin-top: 40px;">
-                    <!-- 修正：リンク先変更 -->
                     <a href="https://app.aitemasu.me/u/info278/gifusaiyo" class="btn">60分の無料相談を予約する</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- セクション6：代表挨拶 -->
+    <!-- セクション6：代表挨拶（画像→動画差し替え済み） -->
     <section id="representative" class="section-padding">
         <div class="container anim-up">
             <h2 class="section-title">代表挨拶</h2>
             
             <div class="rep-container">
                 <div class="rep-img-box">
-                    <img src="https://i.gyazo.com/01532657b21aa28f2f25f3692f273e15.png" alt="代表 伊藤寛">
+                    <video src="https://pub-01c77f2b8a694685b04879178cd9e6f2.r2.dev/profile-laptap.mp4" autoplay loop muted playsinline width="100%"></video>
                 </div>
                 <div class="rep-content">
                     <div class="rep-catch">
@@ -860,7 +867,6 @@
                 <strong>「伝え方が変われば、会社の未来も変わる。」</strong><br>
                 あなたとお会いできるのを楽しみにしています。
             </p>
-            <!-- 修正：リンク先変更 -->
             <a href="https://app.aitemasu.me/u/info278/gifusaiyo" class="btn btn-full" style="padding: 25px; font-size: 1.3rem;">今すぐ60分の無料相談を予約する</a>
         </div>
     </section>
