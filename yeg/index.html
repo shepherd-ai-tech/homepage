@@ -202,7 +202,7 @@
         /* 縦書きの中の数字を縦にする（縦中横） */
         .text-upright {
             text-combine-upright: all;
-            -webkit-text-combine: horizontal; /* Safari用 */
+            -webkit-text-combine: horizontal;
             display: inline-block;
         }
 
@@ -212,18 +212,16 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            /* スマホで画面いっぱいに */
             width: 100vw; 
             height: auto;
-            max-height: 85vh; /* 縦長になりすぎないよう制限しつつ大きく */
+            max-height: 85vh;
             object-fit: contain;
             mix-blend-mode: multiply;
-            z-index: -1; /* コンテンツより下、背景より上 */
+            z-index: -1;
             opacity: 0;
             animation: jiwari 3s ease-out forwards;
         }
 
-        /* PCでは大きくなりすぎないように制限 */
         @media (min-width: 769px) {
             .fixed-bg-img {
                 max-width: 800px;
@@ -334,16 +332,13 @@
             transform: scale(1.02);
         }
 
-        .logo-placeholder {
-            width: 200px;
-            height: 80px;
-            background: #eee;
-            margin: 0 auto 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #999;
-            font-weight: bold;
+        /* ロゴ用スタイル (差し替え) */
+        .overview-logo {
+            width: auto;
+            height: 100px; /* サイズ調整 */
+            max-width: 100%;
+            margin-bottom: 20px;
+            object-fit: contain;
         }
 
         .overview-title {
@@ -390,25 +385,23 @@
         .concept-vertical {
             writing-mode: vertical-rl;
             font-family: var(--font-serif);
-            font-size: 1.8rem; /* 少し文字サイズ調整 */
+            font-size: 1.8rem;
             font-weight: bold;
             letter-spacing: 0.1em;
             line-height: 1.8;
-            height: 380px; /* テキスト量に合わせて少し高く */
+            height: 380px;
             color: var(--secondary);
             border-left: 1px solid var(--accent);
             padding-left: 20px;
-            /* 縦書きの行揃え */
             text-align: left;
         }
 
         .concept-body {
             max-width: 650px;
             line-height: 2;
-            text-align: left; /* 読みやすさのため左揃え推奨だが中央指示ならcenter */
+            text-align: left;
             font-size: 1.05rem;
         }
-        /* PCでは中央揃え、スマホでは左揃えなど調整 */
         @media (min-width: 769px) {
             .concept-body { text-align: center; }
         }
@@ -844,8 +837,6 @@
 
     <!-- Section 1: Hero -->
     <div class="hero" id="top">
-        <!-- 画像は背景固定(fixed-bg-img)にしたので、ここにはコンテンツのみ -->
-        
         <div class="hero-content">
             <p class="hero-subtitle">〜絆の力で、未来を切り開く〜</p>
         </div>
@@ -860,7 +851,9 @@
     <section class="section-overview" id="overview">
         <div class="container">
             <div class="overview-card fade-in-up">
-                <div class="logo-placeholder">YEG LOGO</div>
+                <!-- ロゴ画像差し替え -->
+                <img src="https://pub-01c77f2b8a694685b04879178cd9e6f2.r2.dev/images.png" alt="YEG Logo" class="overview-logo">
+                
                 <p class="overview-title">第23回 岐阜県商工会議所青年部連合会</p>
                 <h1 class="overview-main-title">可 児 大 会</h1>
                 
@@ -886,7 +879,6 @@
             <div class="concept-card fade-in-up">
                 <div class="concept-wrapper">
                     <div class="concept-vertical">
-                        <!-- 数字の22を縦中横（縦向き）に修正 -->
                         <span class="text-upright">22</span>年の伝統を継ぎ、<br>
                         仲間と共に未来を拓く。
                     </div>
@@ -1012,11 +1004,7 @@
                     </div>
                 </div>
             </div>
-
-            <div style="text-align:center; margin-top:20px; font-size:0.8rem; color:white; opacity:0.8;">
-                ※自動スクロール機能は会期当日に動作します。<br>
-                (デモ: ?demo=day1 または ?demo=day2 をURL末尾につけるとシミュレーション可)
-            </div>
+            <!-- 注釈テキスト削除済み -->
         </div>
     </section>
 
@@ -1030,7 +1018,8 @@
 
             <div class="keynote-container">
                 <div class="keynote-img fade-in-up">
-                    <img src="https://placehold.co/350x467/333/FFF?text=Photo" alt="森光 孝雅 氏">
+                    <!-- 講師画像差し替え -->
+                    <img src="https://pub-01c77f2b8a694685b04879178cd9e6f2.r2.dev/%E5%85%AB%E5%A4%A9%E5%A0%82%E3%80%80%E6%A3%AE%E5%85%89%E3%81%95%E3%82%93.png" alt="森光 孝雅 氏">
                 </div>
                 <div class="keynote-content fade-in-up">
                     <span class="keynote-label">記念講演</span>
@@ -1067,7 +1056,8 @@
                 <!-- Venue 1 -->
                 <div class="access-card fade-in-up">
                     <div class="venue-img-placeholder">
-                        <img src="https://placehold.co/600x400/ccc/666?text=ala" alt="可児市文化創造センター ala">
+                        <!-- Ala画像差し替え -->
+                        <img src="https://pub-01c77f2b8a694685b04879178cd9e6f2.r2.dev/ala.webp" alt="可児市文化創造センター ala">
                     </div>
                     <div class="access-info">
                         <div class="venue-name">可児市文化創造センター ala</div>
@@ -1079,7 +1069,8 @@
                 <!-- Venue 2 -->
                 <div class="access-card fade-in-up" style="transition-delay: 0.2s;">
                     <div class="venue-img-placeholder">
-                        <img src="https://placehold.co/600x400/ccc/666?text=Center" alt="可児市福祉センター">
+                        <!-- 福祉センター画像差し替え -->
+                        <img src="https://pub-01c77f2b8a694685b04879178cd9e6f2.r2.dev/%E5%8F%AF%E5%85%90%E5%B8%82%E7%A6%8F%E7%A5%89%E3%82%BB%E3%83%B3%E3%82%BF%E3%83%BC.jpeg" alt="可児市福祉センター">
                     </div>
                     <div class="access-info">
                         <div class="venue-name">可児市福祉センター</div>
