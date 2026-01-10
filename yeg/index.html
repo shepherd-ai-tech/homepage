@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- タイトルをご指示通り修正 -->
     <title>挑戦 ~ 絆の力で未来を切り開く ~</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,7 +16,7 @@
             --primary: #8B2635;
             --secondary: #1A1A1A;
             --accent: #C9A961;
-            --bg-card: rgba(255, 255, 255, 0.92); 
+            --bg-card: rgba(255, 255, 255, 0.95); 
             --text-main: #333333;
             --text-sub: #666666;
             --font-serif: 'Noto Serif JP', serif;
@@ -35,6 +34,7 @@
             font-family: var(--font-sans);
             color: var(--text-main);
             overflow-x: hidden;
+            /* 背景画像（和紙） */
             background: url('https://pub-01c77f2b8a694685b04879178cd9e6f2.r2.dev/wa-red-paper-background.jpg') no-repeat center center fixed;
             background-size: cover;
         }
@@ -73,7 +73,7 @@
             left: 0;
             width: 100%;
             height: 100vh;
-            background: rgba(26, 26, 26, 0.95);
+            background: rgba(26, 26, 26, 0.98);
             z-index: 999;
             display: flex;
             flex-direction: column;
@@ -144,26 +144,31 @@
             padding: 0 20px;
         }
 
-        h2.section-title {
-            font-family: var(--font-serif);
-            font-size: 2.5rem;
-            text-align: center;
+        .section-header {
             margin-bottom: 3rem;
-            color: var(--secondary);
-            position: relative;
-            display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
-            text-shadow: 2px 2px 0 #fff, -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff;
+            text-align: left;
+            padding-left: 10px;
+            border-left: 5px solid var(--accent);
         }
-        
-        h2.section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 3px;
-            background: var(--accent);
-            margin: 10px auto 0;
+
+        .section-title-en {
+            font-family: var(--font-en);
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: white;
+            line-height: 1;
+            margin: 0;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            letter-spacing: 0.05em;
+        }
+
+        .section-title-ja {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin-top: 5px;
+            font-weight: 500;
+            letter-spacing: 0.2em;
         }
 
         .btn {
@@ -194,29 +199,36 @@
             transform: translateY(0);
         }
 
-        /* --- Section 1: ヒーローセクション --- */
-        .hero {
-            height: 100vh;
-            width: 100%;
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            overflow: hidden;
+        /* 縦書きの中の数字を縦にする（縦中横） */
+        .text-upright {
+            text-combine-upright: all;
+            -webkit-text-combine: horizontal; /* Safari用 */
+            display: inline-block;
         }
 
-        /* --- 【修正】画像の表示設定 --- */
-        .hero-img {
-            /* PCデフォルト設定（迫力重視） */
-            width: 170vw;
+        /* --- 背景固定画像（挑戦） --- */
+        .fixed-bg-img {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            /* スマホで画面いっぱいに */
+            width: 100vw; 
             height: auto;
-            max-width: none;
+            max-height: 85vh; /* 縦長になりすぎないよう制限しつつ大きく */
+            object-fit: contain;
             mix-blend-mode: multiply;
-            /* 周囲を切り落とす設定（PCでは枠消しに有効だがスマホでは逆効果になるため後で解除） */
-            clip-path: inset(100px);
-            margin-top: -130px; 
+            z-index: -1; /* コンテンツより下、背景より上 */
             opacity: 0;
             animation: jiwari 3s ease-out forwards;
+        }
+
+        /* PCでは大きくなりすぎないように制限 */
+        @media (min-width: 769px) {
+            .fixed-bg-img {
+                max-width: 800px;
+                width: auto;
+            }
         }
 
         @keyframes jiwari {
@@ -224,13 +236,24 @@
             100% { opacity: 1; filter: blur(0); }
         }
 
+        /* --- Section 1: ヒーローセクション --- */
+        .hero {
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
         .hero-content {
             position: absolute;
-            top: 60%;
+            bottom: 15%; 
             left: 50%;
-            transform: translate(-50%, -50%);
+            transform: translateX(-50%);
             text-align: center;
-            width: 90%; /* スマホで文字が端に行き過ぎないよう調整 */
+            width: 100%;
             z-index: 10;
         }
 
@@ -238,11 +261,15 @@
             font-family: var(--font-serif);
             font-size: 1.5rem;
             color: white;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
             letter-spacing: 0.1em;
             opacity: 0;
             animation: floatUp 1.5s ease-out 2s forwards;
             line-height: 1.5;
+            background: rgba(0,0,0,0.2); 
+            padding: 5px 20px;
+            border-radius: 30px;
+            display: inline-block;
         }
 
         @keyframes floatUp {
@@ -252,7 +279,7 @@
 
         .scroll-indicator {
             position: absolute;
-            bottom: 30px;
+            bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
             color: white;
@@ -260,6 +287,7 @@
             opacity: 0;
             animation: fadeIn 1s ease-out 3s forwards;
             cursor: pointer;
+            z-index: 20;
         }
 
         .scroll-icon {
@@ -362,21 +390,27 @@
         .concept-vertical {
             writing-mode: vertical-rl;
             font-family: var(--font-serif);
-            font-size: 2rem;
+            font-size: 1.8rem; /* 少し文字サイズ調整 */
             font-weight: bold;
-            letter-spacing: 0.2em;
-            line-height: 2;
-            height: 300px;
+            letter-spacing: 0.1em;
+            line-height: 1.8;
+            height: 380px; /* テキスト量に合わせて少し高く */
             color: var(--secondary);
             border-left: 1px solid var(--accent);
             padding-left: 20px;
+            /* 縦書きの行揃え */
+            text-align: left;
         }
 
         .concept-body {
-            max-width: 600px;
+            max-width: 650px;
             line-height: 2;
-            text-align: center;
-            font-size: 1.1rem;
+            text-align: left; /* 読みやすさのため左揃え推奨だが中央指示ならcenter */
+            font-size: 1.05rem;
+        }
+        /* PCでは中央揃え、スマホでは左揃えなど調整 */
+        @media (min-width: 769px) {
+            .concept-body { text-align: center; }
         }
 
         /* --- Section 4: 3つの価値 --- */
@@ -428,10 +462,11 @@
 
         /* --- Section 5: タイムライン --- */
         .timeline-wrapper-bg {
-            background: rgba(250, 250, 250, 0.8);
+            background: rgba(250, 250, 250, 0.85);
             border-radius: 30px;
             padding: 50px 20px;
-            backdrop-filter: blur(3px);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
         }
 
         .timeline-tabs {
@@ -732,35 +767,27 @@
             margin: 5px 0;
         }
 
-        /* --- 【修正】レスポンシブ調整 --- */
+        /* --- レスポンシブ調整 --- */
         @media (max-width: 768px) {
-            .hero {
-                /* スマホでは中央寄せ */
-                align-items: center; 
+            .section-header {
+                padding-left: 15px;
+            }
+            .section-title-en {
+                font-size: 2.5rem;
+            }
+            .section-title-ja {
+                font-size: 1rem;
             }
 
-            .hero-img {
-                /* 画面幅にフィットさせ、切り抜き(clip-path)を解除する */
-                width: 100vw;
-                height: auto;
-                max-height: 70vh; /* 縦長になりすぎないよう制限 */
-                object-fit: contain;
-                margin-top: -50px; /* 位置を少し上に */
-                clip-path: none; /* 重要：切り抜きを解除して文字全体を見せる */
-            }
-            
             .hero-content {
-                /* 文字を画像の下の方へ */
-                top: 75%;
+                bottom: 10%;
             }
 
             .hero-subtitle {
                 font-size: 1.1rem;
+                width: 80%;
             }
 
-            .section-title {
-                font-size: 2rem;
-            }
             .concept-wrapper {
                 flex-direction: column;
             }
@@ -772,7 +799,13 @@
                 padding-bottom: 10px;
                 padding-left: 0;
                 margin-bottom: 20px;
+                text-align: center;
+                font-size: 1.5rem;
             }
+            .concept-body {
+                text-align: left;
+            }
+            
             .keynote-container {
                 flex-direction: column;
             }
@@ -788,6 +821,9 @@
     </style>
 </head>
 <body>
+
+    <!-- 背景に固定配置する「挑戦」画像 -->
+    <img src="https://pub-01c77f2b8a694685b04879178cd9e6f2.r2.dev/chousen.png" alt="挑戦" class="fixed-bg-img">
 
     <!-- ナビゲーションボタン -->
     <div class="menu-btn" onclick="toggleMenu()">
@@ -808,7 +844,7 @@
 
     <!-- Section 1: Hero -->
     <div class="hero" id="top">
-        <img src="https://pub-01c77f2b8a694685b04879178cd9e6f2.r2.dev/chousen.png" alt="挑戦" class="hero-img">
+        <!-- 画像は背景固定(fixed-bg-img)にしたので、ここにはコンテンツのみ -->
         
         <div class="hero-content">
             <p class="hero-subtitle">〜絆の力で、未来を切り開く〜</p>
@@ -842,19 +878,28 @@
     <!-- Section 3: Concept -->
     <section class="section-concept" id="concept">
         <div class="container">
-            <h2 class="section-title fade-in-up">大会趣旨</h2>
+            <div class="section-header fade-in-up">
+                <h2 class="section-title-en">Concept</h2>
+                <div class="section-title-ja">大会趣旨</div>
+            </div>
+
             <div class="concept-card fade-in-up">
                 <div class="concept-wrapper">
                     <div class="concept-vertical">
-                        22年の伝統を継ぎ、<br>
+                        <!-- 数字の22を縦中横（縦向き）に修正 -->
+                        <span class="text-upright">22</span>年の伝統を継ぎ、<br>
                         仲間と共に未来を拓く。
                     </div>
                     <div class="concept-body">
-                        <p>昨年、私たちはSCRUMを組み団結を深めました。</p>
-                        <p>今年は、その絆をさらに育むために一歩踏み出します。</p>
+                        <p>変化の激しい時代、私たち経営者が成果を出し続けるために必要なのは、個の成長だけではありません。<strong>多くの仲間と手を携え、共に未来を切り拓く「連携の力」</strong>こそが重要です。</p>
                         <br>
-                        <p>厳しい時代だからこそ、</p>
-                        <p><strong>個の挑戦</strong>と、<strong>仲間との連携</strong>が力になる。</p>
+                        <p>昨年度、「SCRUM」を合言葉に深めた団結。今年度はさらに一歩踏み出し、メンバー同士の絆を育み、共に未来への道を拓く大会を目指します。</p>
+                        <br>
+                        <p>22回にわたり紡がれてきた伝統を受け継ぎ、県連活動の精神を象徴する県連旗を全員で確認。そのうえで、挑戦し続ける事業者マインドを学び、各単会の特徴や未来へのビジョンを共有します。</p>
+                        <br>
+                        <p>大決起祭・昼食交流会・大懇親会——3つの交流の場を通じて、メンバー間のつながりを深め、確かな絆を形成します。</p>
+                        <br>
+                        <p>伝統を継承し、未来を創造する。共に歩む仲間との絆を力に変える特別な一日へ。</p>
                     </div>
                 </div>
             </div>
@@ -864,7 +909,11 @@
     <!-- Section 4: Values -->
     <section class="section-values">
         <div class="container">
-            <h2 class="section-title fade-in-up">3つの価値</h2>
+            <div class="section-header fade-in-up">
+                <h2 class="section-title-en">Values</h2>
+                <div class="section-title-ja">3つの価値</div>
+            </div>
+
             <div class="values-grid">
                 <!-- Card 1 -->
                 <div class="value-card fade-in-up" style="transition-delay: 0s;">
@@ -891,7 +940,10 @@
     <!-- Section 5: Timeline -->
     <section class="section-timeline" id="timeline">
         <div class="container">
-            <h2 class="section-title fade-in-up">Program</h2>
+            <div class="section-header fade-in-up">
+                <h2 class="section-title-en">Program</h2>
+                <div class="section-title-ja">タイムライン</div>
+            </div>
             
             <div class="timeline-wrapper-bg fade-in-up">
                 <div class="timeline-tabs">
@@ -971,6 +1023,11 @@
     <!-- Section 6: Keynote -->
     <section class="section-keynote" id="keynote">
         <div class="container">
+            <div class="section-header fade-in-up" style="border-left-color: white;">
+                <h2 class="section-title-en">Keynote</h2>
+                <div class="section-title-ja" style="color: rgba(255,255,255,0.8);">記念講演</div>
+            </div>
+
             <div class="keynote-container">
                 <div class="keynote-img fade-in-up">
                     <img src="https://placehold.co/350x467/333/FFF?text=Photo" alt="森光 孝雅 氏">
@@ -1002,7 +1059,10 @@
     <!-- Section 7: Access -->
     <section class="section-access" id="access">
         <div class="container">
-            <h2 class="section-title fade-in-up">Access</h2>
+            <div class="section-header fade-in-up">
+                <h2 class="section-title-en">Access</h2>
+                <div class="section-title-ja">会場アクセス</div>
+            </div>
             <div class="access-grid">
                 <!-- Venue 1 -->
                 <div class="access-card fade-in-up">
@@ -1080,7 +1140,7 @@
                 });
             }, observerOptions);
 
-            const elements = document.querySelectorAll('.fade-in-up, .timeline-wrapper-bg');
+            const elements = document.querySelectorAll('.fade-in-up, .timeline-wrapper-bg, .section-header');
             elements.forEach(el => observer.observe(el));
         });
 
