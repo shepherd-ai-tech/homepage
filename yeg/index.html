@@ -205,6 +205,14 @@
             -webkit-text-combine: horizontal;
             display: inline-block;
         }
+        
+        /* 強調マーカー（金色） */
+        .marker-highlight {
+            background: linear-gradient(transparent 60%, rgba(201, 169, 97, 0.5) 60%);
+            font-weight: bold;
+            padding-bottom: 2px;
+            display: inline;
+        }
 
         /* --- 背景固定画像（挑戦） --- */
         .fixed-bg-img {
@@ -220,6 +228,9 @@
             z-index: -1;
             opacity: 0;
             animation: jiwari 3s ease-out forwards;
+            
+            /* 枠線（縁）を消すため、周囲20pxをバッサリ切り落とす */
+            clip-path: inset(20px);
         }
 
         @media (min-width: 769px) {
@@ -332,10 +343,9 @@
             transform: scale(1.02);
         }
 
-        /* ロゴ用スタイル (差し替え) */
         .overview-logo {
             width: auto;
-            height: 100px; /* サイズ調整 */
+            height: 100px;
             max-width: 100%;
             margin-bottom: 20px;
             object-fit: contain;
@@ -581,17 +591,71 @@
             border-radius: 10px;
             box-shadow: 0 3px 10px rgba(0,0,0,0.1);
             border-left: 5px solid var(--secondary);
+            position: relative; /* Mapボタン配置用 */
         }
 
         .event-title {
             font-size: 1.2rem;
             font-weight: bold;
             margin-bottom: 5px;
+            padding-right: 60px; /* Mapボタンと被らないように */
         }
 
         .event-place {
             font-size: 0.9rem;
             color: var(--text-sub);
+        }
+
+        .event-note {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            border-left: 4px solid var(--accent);
+            color: var(--text-main);
+        }
+        .event-note ul {
+            margin: 5px 0 0;
+            padding-left: 20px;
+        }
+        .event-note li {
+            margin-bottom: 3px;
+        }
+
+        .status-badge {
+            display: inline-block;
+            background: #999;
+            color: white;
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-left: 10px;
+            vertical-align: middle;
+            font-weight: normal;
+        }
+        .status-badge.closed {
+            background: #d9534f;
+        }
+
+        /* タイムライン用のマップボタン */
+        .timeline-map-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: inline-block;
+            background: white;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .timeline-map-btn:hover {
+            background: var(--primary);
+            color: white;
         }
 
         /* --- Section 6: 記念講演 --- */
@@ -652,20 +716,22 @@
             margin-bottom: 20px;
         }
 
-        .keynote-title {
+        /* タイトル統合・修正 */
+        .keynote-title-wrapper {
+            margin-bottom: 20px;
             font-family: var(--font-serif);
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+        }
+        .keynote-main-text {
+            display: block;
+            font-size: 2.8rem;
             line-height: 1.2;
             text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            margin-bottom: 5px;
         }
-
-        .keynote-subtitle {
+        .keynote-sub-text {
+            display: block;
             font-size: 1.5rem;
-            margin-bottom: 30px;
-            border-bottom: 1px solid rgba(255,255,255,0.3);
-            padding-bottom: 20px;
-            display: inline-block;
+            opacity: 0.9;
         }
 
         .quote-box {
@@ -676,6 +742,22 @@
             padding: 20px;
             border-left: 4px solid var(--accent);
             margin-bottom: 30px;
+            min-height: 80px; /* 高さ確保 */
+            display: flex;
+            align-items: center;
+        }
+
+        /* カッコいい名言アニメーション */
+        .reveal-text {
+            opacity: 0;
+            transform: translateY(15px);
+            filter: blur(10px);
+            transition: all 2s cubic-bezier(0.23, 1, 0.32, 1); /* Ease Out Quint系で上品に */
+        }
+        .reveal-text.visible {
+            opacity: 1;
+            transform: translateY(0);
+            filter: blur(0);
         }
 
         /* --- Section 7: 会場アクセス --- */
@@ -807,6 +889,12 @@
                 max-width: 300px;
                 height: 400px;
             }
+            .keynote-main-text {
+                font-size: 2rem;
+            }
+            .keynote-sub-text {
+                font-size: 1.2rem;
+            }
             .overview-card, .concept-card {
                 padding: 40px 20px;
             }
@@ -851,9 +939,7 @@
     <section class="section-overview" id="overview">
         <div class="container">
             <div class="overview-card fade-in-up">
-                <!-- ロゴ画像差し替え -->
                 <img src="https://pub-01c77f2b8a694685b04879178cd9e6f2.r2.dev/images.png" alt="YEG Logo" class="overview-logo">
-                
                 <p class="overview-title">第23回 岐阜県商工会議所青年部連合会</p>
                 <h1 class="overview-main-title">可 児 大 会</h1>
                 
@@ -883,7 +969,7 @@
                         仲間と共に未来を拓く。
                     </div>
                     <div class="concept-body">
-                        <p>変化の激しい時代、私たち経営者が成果を出し続けるために必要なのは、個の成長だけではありません。<strong>多くの仲間と手を携え、共に未来を切り拓く「連携の力」</strong>こそが重要です。</p>
+                        <p>変化の激しい時代、私たち経営者が成果を出し続けるために必要なのは、個の成長だけではありません。<span class="marker-highlight">多くの仲間と手を携え、共に未来を切り拓く「連携の力」</span>こそが重要です。</p>
                         <br>
                         <p>昨年度、「SCRUM」を合言葉に深めた団結。今年度はさらに一歩踏み出し、メンバー同士の絆を育み、共に未来への道を拓く大会を目指します。</p>
                         <br>
@@ -950,7 +1036,8 @@
                     <div class="event-item" data-time="2026-01-16T17:00:00" data-end="2026-01-16T19:00:00">
                         <span class="event-time">17:00 - 19:00</span>
                         <div class="event-card">
-                            <div class="event-title">道府県連訪問事業</div>
+                            <a href="https://maps.google.com/?q=可児市文化創造センター" target="_blank" class="timeline-map-btn"><i class="fas fa-map-marker-alt"></i> Map</a>
+                            <div class="event-title">道府県連訪問事業 <span class="status-badge closed">予約終了</span></div>
                             <div class="event-place">@ala WSルーム</div>
                             <p>未来を描くバックキャストトレーニング</p>
                         </div>
@@ -959,9 +1046,20 @@
                     <div class="event-item" data-time="2026-01-16T19:30:00" data-end="2026-01-16T22:00:00">
                         <span class="event-time">19:30 - 22:00</span>
                         <div class="event-card">
+                            <a href="https://maps.google.com/?q=岐阜県可児市広見630-3" target="_blank" class="timeline-map-btn"><i class="fas fa-map-marker-alt"></i> Map</a>
                             <div class="event-title">大決起祭</div>
-                            <div class="event-place">@可児市広見地区</div>
-                            <p>地元の仲間と語り合う夜</p>
+                            <div class="event-place">@絶好鶏 (岐阜県可児市広見630-3)</div>
+                            <p>YEGの仲間と語り合う夜</p>
+                            
+                            <!-- 補足情報 -->
+                            <div class="event-note">
+                                <strong>【要事前予約】</strong>
+                                <ul>
+                                    <li>参加費：5,000円 (飲食代)</li>
+                                    <li>予約期限：1月13日まで</li>
+                                    <li>※駐車場は最寄りのコインパーキングをご利用ください</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -973,6 +1071,7 @@
                     <div class="event-item" data-time="2026-01-17T11:00:00" data-end="2026-01-17T12:40:00">
                         <span class="event-time">11:00 - 12:40</span>
                         <div class="event-card">
+                             <a href="https://maps.google.com/?q=可児市福祉センター" target="_blank" class="timeline-map-btn"><i class="fas fa-map-marker-alt"></i> Map</a>
                             <div class="event-title">6単会昼食交流会</div>
                             <div class="event-place">@福祉センター</div>
                         </div>
@@ -981,6 +1080,7 @@
                     <div class="event-item" data-time="2026-01-17T13:00:00" data-end="2026-01-17T15:00:00">
                         <span class="event-time">13:00 - 15:00</span>
                         <div class="event-card">
+                            <a href="https://maps.google.com/?q=可児市文化創造センター" target="_blank" class="timeline-map-btn"><i class="fas fa-map-marker-alt"></i> Map</a>
                             <div class="event-title">記念式典</div>
                             <div class="event-place">@ala 小劇場</div>
                         </div>
@@ -989,6 +1089,7 @@
                     <div class="event-item" data-time="2026-01-17T15:15:00" data-end="2026-01-17T17:30:00">
                         <span class="event-time">15:15 - 17:30</span>
                         <div class="event-card">
+                            <a href="https://maps.google.com/?q=可児市文化創造センター" target="_blank" class="timeline-map-btn"><i class="fas fa-map-marker-alt"></i> Map</a>
                             <div class="event-title">記念事業</div>
                             <div class="event-place">@ala 小劇場</div>
                             <p>講演会 + 6単会ビジョン発表</p>
@@ -996,15 +1097,15 @@
                     </div>
 
                     <div class="event-item" data-time="2026-01-17T17:30:00" data-end="2026-01-17T20:00:00">
-                        <span class="event-time">17:30 - 20:00</span>
+                        <span class="event-time">17:30 受付 / 18:00 開会 - 20:00</span>
                         <div class="event-card">
+                            <a href="https://maps.google.com/?q=可児市福祉センター" target="_blank" class="timeline-map-btn"><i class="fas fa-map-marker-alt"></i> Map</a>
                             <div class="event-title">大懇親会</div>
                             <div class="event-place">@福祉センター</div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- 注釈テキスト削除済み -->
         </div>
     </section>
 
@@ -1018,16 +1119,18 @@
 
             <div class="keynote-container">
                 <div class="keynote-img fade-in-up">
-                    <!-- 講師画像差し替え -->
                     <img src="https://pub-01c77f2b8a694685b04879178cd9e6f2.r2.dev/%E5%85%AB%E5%A4%A9%E5%A0%82%E3%80%80%E6%A3%AE%E5%85%89%E3%81%95%E3%82%93.png" alt="森光 孝雅 氏">
                 </div>
                 <div class="keynote-content fade-in-up">
                     <span class="keynote-label">記念講演</span>
-                    <h2 class="keynote-title">逆境からの挑戦</h2>
-                    <p class="keynote-subtitle">〜俺たちの未来〜</p>
+                    
+                    <!-- タイトル統合 -->
+                    <div class="keynote-title-wrapper">
+                        <h2 class="keynote-main-text">逆境からの挑戦、<br>俺たちの未来</h2>
+                    </div>
                     
                     <div class="quote-box">
-                        <span id="typewriter">"事を成すは逆境にあり 事を破るは順境にあり"</span>
+                        <span id="reveal-text" class="reveal-text">"事を成すは逆境にあり 事を破るは順境にあり"</span>
                     </div>
 
                     <h3 style="margin-bottom:5px;">森光 孝雅 氏</h3>
@@ -1056,7 +1159,6 @@
                 <!-- Venue 1 -->
                 <div class="access-card fade-in-up">
                     <div class="venue-img-placeholder">
-                        <!-- Ala画像差し替え -->
                         <img src="https://pub-01c77f2b8a694685b04879178cd9e6f2.r2.dev/ala.webp" alt="可児市文化創造センター ala">
                     </div>
                     <div class="access-info">
@@ -1069,7 +1171,6 @@
                 <!-- Venue 2 -->
                 <div class="access-card fade-in-up" style="transition-delay: 0.2s;">
                     <div class="venue-img-placeholder">
-                        <!-- 福祉センター画像差し替え -->
                         <img src="https://pub-01c77f2b8a694685b04879178cd9e6f2.r2.dev/%E5%8F%AF%E5%85%90%E5%B8%82%E7%A6%8F%E7%A5%89%E3%82%BB%E3%83%B3%E3%82%BF%E3%83%BC.jpeg" alt="可児市福祉センター">
                     </div>
                     <div class="access-info">
@@ -1204,27 +1305,17 @@
 
         window.addEventListener('load', checkCurrentSchedule);
 
+        // 名言の「カッコいい」アニメーション制御
         const quoteObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const textEl = document.getElementById('typewriter');
-                    const text = textEl.textContent;
-                    textEl.textContent = '';
-                    textEl.style.opacity = 1;
-                    
-                    let i = 0;
-                    const typeWriter = () => {
-                        if (i < text.length) {
-                            textEl.textContent += text.charAt(i);
-                            i++;
-                            setTimeout(typeWriter, 100);
-                        }
-                    };
-                    typeWriter();
+                    // visibleクラスをつけることでCSSアニメーション発火
+                    document.getElementById('reveal-text').classList.add('visible');
                     quoteObserver.unobserve(entry.target);
                 }
             });
-        });
+        }, { threshold: 0.5 }); // 50%見えたら発火
+        
         quoteObserver.observe(document.querySelector('.quote-box'));
 
     </script>
