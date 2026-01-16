@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大会運営を、仕組みで変える。 - 第23回岐阜県連大会 可児大会</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #8B2635;
+            --secondary: #1A1A1A;
+            --accent: #C9A961;
+            --bg-card: rgba(255, 255, 255, 0.95);
+            --bg-cream: #FFFDF5;
+            --font-serif: 'Noto Serif JP', serif;
+            --font-sans: 'Noto Sans JP', sans-serif;
+            --font-en: 'Montserrat', sans-serif;
+        }
+
+        html { scroll-behavior: smooth; }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-sans);
+            color: var(--text-main);
+            overflow-x: hidden;
+            background: url('https://pub-01c77f2b8a694685b04879178cd9e6f2.r2.dev/wa-red-paper-background.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        /* --- 戻るボタン --- */
+        .back-nav {
+            position: fixed;
+            top: 25px;
+            left: 20px;
+            z-index: 1000;
+        }
+        .back-btn-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: #ffffff;
+            color: var(--primary);
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-family: var(--font-sans);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            letter-spacing: 0.05em;
+        }
+        .back-btn-pill:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            background: #fffdf5;
+        }
+
+        /* --- 共通コンテナ --- */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- Section 1: ファーストビュー --- */
+        .dx-hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 100px 20px;
+            position: relative;
+        }
+
+        .dx-title-en {
+            font-family: var(--font-en);
+            font-size: 5rem;
+            font-weight: 900;
+            color: rgba(255,255,255,0.1);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            white-space: nowrap;
+            letter-spacing: 0.1em;
+        }
+
+        .dx-main-title {
+            font-family: var(--font-serif);
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 30px;
+            z-index: 1;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .dx-copy {
+            font-size: 1.4rem;
+            line-height: 1.8;
+            max-width: 800px;
+            z-index: 1;
+            margin-bottom: 40px;
+            font-weight: bold;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.8);
+        }
+
+        /* --- Section 2: 課題解決 --- */
+        .section-problem {
+            background: var(--bg-cream);
+            padding: 100px 0;
+            text-align: center;
+            border-top: 5px solid var(--accent);
+            border-bottom: 5px solid var(--accent);
+        }
+        
+        .problem-title {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            color: var(--secondary);
+            margin-bottom: 40px;
+            line-height: 1.4;
+        }
+
+        .problem-bubbles {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .bubble {
+            background: white;
+            padding: 20px 30px;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+            font-weight: bold;
+            color: #555;
+            border: 1px solid #eee;
+        }
+        
+        .problem-text {
+            margin-top: 50px;
+            line-height: 2;
+            font-size: 1.1rem;
+            color: var(--text-main);
+        }
+
+        /* --- Section 3: 解決策（3つのDX） --- */
+        .section-solution {
+            padding: 100px 0;
+        }
+
+        .solution-intro {
+            text-align: center;
+            color: white;
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            margin-bottom: 80px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .content-card {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 60px;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+            margin-bottom: 100px;
+            overflow: hidden;
+        }
+        .content-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+
+        .section-number {
+            font-family: var(--font-en);
+            font-size: 6rem;
+            font-weight: 900;
+            color: rgba(201, 169, 97, 0.2);
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            line-height: 1;
+        }
+
+        .card-header {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 20px;
+        }
+
+        .card-title {
+            font-family: var(--font-serif);
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        .card-sub {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--text-main);
+        }
+
+        .card-body {
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        /* 詳細ボックス（こだわりポイント） */
+        .detail-box {
+            background: #f9f9f9;
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 30px;
+        }
+        .detail-title {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            border-left: 4px solid var(--accent);
+            padding-left: 15px;
+        }
+        
+        .detail-list dt {
+            font-weight: bold;
+            color: var(--primary);
+            margin-top: 20px;
+            margin-bottom: 5px;
+        }
+        .detail-list dd {
+            margin-left: 0;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: #444;
+        }
+
+        /* --- 画像・動画エリア --- */
+        .visual-area {
+            /* 高さを自動にして画像比率を守る */
+            background: transparent;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            overflow: hidden;
+            text-align: center;
+        }
+        .visual-area img,
+        .visual-area video {
+            width: 100%;
+            height: auto;
+            max-height: 500px;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        /* --- Section 6: 開発者紹介 --- */
+        .section-dev {
+            padding: 100px 0;
+            background: rgba(0,0,0,0.6);
+        }
+        
+        .dev-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .dev-video-area {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .dev-video {
+            width: 100%;
+            aspect-ratio: 9/16;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .dev-info-area {
+            color: white;
+        }
+        
+        .dev-label {
+            color: var(--accent);
+            font-weight: bold;
+            letter-spacing: 0.1em;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .dev-name {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            margin-bottom: 5px;
+        }
+        .dev-role {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-bottom: 30px;
+        }
+        
+        .dev-desc {
+            line-height: 1.8;
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* --- アニメーション --- */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: var(--secondary);
+            color: #888;
+            padding: 50px 0 20px;
+            text-align: center;
+        }
+
+        /* --- レスポンシブ --- */
+        @media (max-width: 768px) {
+            .dx-title-en { font-size: 3rem; }
+            .dx-main-title { font-size: 2.5rem; }
+            .dx-copy { font-size: 1.2rem; }
+            
+            .content-card { padding: 30px; }
+            .section-number { font-size: 4rem; top: 10px; right: 20px; }
+            
+            .dev-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .dev-video-area {
+                width: 70%;
+            }
+            .dev-info-area {
+                text-align: center;
+            }
+            .dev-desc { text-align: left; }
+            
+            .problem-bubbles { flex-direction: column; }
+            .bubble { width: 100%; box-sizing: border-box; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 戻るボタン -->
+    <div class="back-nav">
+        <a href="https://yeg.shepherd-ai.com/" class="back-btn-pill">
+            <i class="fas fa-arrow-left"></i> 大会ページへ戻る
+        </a>
+    </div>
+
+    <!-- Section 1: ファーストビュー -->
+    <header class="dx-hero">
+        <div class="dx-title-en">DX CHALLENGE</div>
+        <h1 class="dx-main-title fade-in-up">「挑戦」</h1>
+        <p class="dx-copy fade-in-up" style="transition-delay: 0.2s;">
+            問い合わせ対応、クーポン管理、進行案内。<br>
+            ぜんぶ、仕組みに任せました。
+        </p>
+        
+        <div style="position:absolute; bottom:30px; animation:bounce 2s infinite; opacity:0.8;">
+            SCROLL <i class="fas fa-chevron-down"></i>
+        </div>
+    </header>
+
+    <!-- Section 2: 課題解決 -->
+    <section class="section-problem">
+        <div class="container fade-in-up">
+            <h2 class="problem-title">すべての大会が抱える「運営の課題」。<br>その負担、仕組みで解決できます。</h2>
+            
+            <div class="problem-bubbles">
+                <div class="bubble">問い合わせ対応 <span style="color:var(--primary)">➡ 自動化</span></div>
+                <div class="bubble">集計作業 <span style="color:var(--primary)">➡ 即時完了</span></div>
+                <div class="bubble">進行案内 <span style="color:var(--primary)">➡ リアルタイム</span></div>
+            </div>
+
+            <p class="problem-text">
+                「同じ質問への対応」「紙クーポンの手集計」「進行状況の問い合わせ」。<br>
+                どの地域の大会でも共通して抱えている、スタッフの時間を奪う悩み。<br>
+                <br>
+                これらを「仕方ない」と諦める必要はありません。<br>
+                テクノロジーを少し取り入れるだけで、運営の負担は劇的に軽くなります。
+            </p>
+        </div>
+    </section>
+
+    <!-- Section 3: 解決策（3つのDX） -->
+    <section class="section-solution">
+        <div class="container">
+            <h2 class="solution-intro fade-in-up">今回の大会では、<br>3つの「仕組み化」に挑戦しました。</h2>
+
+            <!-- ① AIチャット（動画に変更） -->
+            <div class="content-card fade-in-up">
+                <div class="section-number">01</div>
+                <div class="card-header">
+                    <h2 class="card-title">AIチャット × LINE連携<br>「バラんまるAI」</h2>
+                    <p class="card-sub">問い合わせ対応を、24時間キャラクターに任せる。</p>
+                </div>
+                
+                <div class="visual-area">
+                    <!-- 画像から動画へ差し替え -->
+                    <video autoplay muted loop playsinline>
+                        <source src="https://pub-01c77f2b8a694685b04879178cd9e6f2.r2.dev/Ai%E3%83%8F%E3%82%99%E3%83%A9%E3%82%93%E3%81%BE%E3%82%8B%E7%AE%A1%E7%90%86%E7%94%BB%E9%9D%A2.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+
+                <div class="card-body">
+                    <p>
+                        LINEで質問すると、可児生まれのキャラクター「バラんまる」が即座に回答。<br>
+                        日程、会場、講演者情報、クーポンの使い方まで、24時間いつでも正確に案内します。
+                    </p>
+
+                    <div class="detail-box">
+                        <div class="detail-title">こだわりポイント</div>
+                        <dl class="detail-list">
+                            <dt>キャラクター設計の意図</dt>
+                            <dd>
+                                機械的なチャットボットでは「冷たい」印象を持たれがち。キャラクターを設定することで親しみやすさが生まれ、繰り返し使いたくなる仕組みに。結果、自己解決率が上がり運営負担が減ります。
+                            </dd>
+
+                            <dt>キャラクター詳細設定</dt>
+                            <dd>
+                                名前はバラんまる。可児出身、若獅子・森蘭丸さまに憧れるライオンの男の子（8歳）。<br>
+                                一人称は「拙者」。武将風の口調（〜である、〜なのだ）ですが、素直さと元気さを持ち合わせています。
+                            </dd>
+
+                            <dt>回答品質のルール設計</dt>
+                            <dd>
+                                公式案内役として、正確さを最優先。質問にはまず結論を簡潔に伝えます。<br>
+                                「同じ自己紹介を繰り返さない」「ふざけすぎない」といった禁止事項も明文化しています。
+                            </dd>
+
+                            <dt>運営側のメリット</dt>
+                            <dd>
+                                問い合わせ対応の自動化により人員削減。24時間対応が可能になり、毎回同じ質問への個別対応が不要になります。
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ② 電子クーポンアプリ -->
+            <div class="content-card fade-in-up">
+                <div class="section-number">02</div>
+                <div class="card-header">
+                    <h2 class="card-title">電子クーポンアプリ</h2>
+                    <p class="card-sub">印刷ゼロ、集計ゼロ、人員ゼロ。</p>
+                </div>
+
+                <div class="visual-area">
+                    <img src="https://pub-01c77f2b8a694685b04879178cd9e6f2.r2.dev/%E3%82%AF%E3%83%BC%E3%83%9B%E3%82%9A%E3%83%B3%E7%AE%A1%E7%90%86%E7%94%BB%E9%9D%A2.png" alt="電子クーポン管理画面">
+                </div>
+
+                <div class="card-body">
+                    <p>
+                        500円×4枚の電子クーポンを参加者に配布。<br>
+                        いつ・誰が・何を使ったかをリアルタイムで管理できます。
+                    </p>
+
+                    <div class="detail-box">
+                        <div class="detail-title">こだわりポイント</div>
+                        <dl class="detail-list">
+                            <dt>不正防止機能</dt>
+                            <dd>
+                                同姓同名や同一メールアドレスでの重複登録をシステムで防止。<br>
+                                電子管理により、紙クーポンでは把握できなかった不正利用を根本から防ぎます。
+                            </dd>
+
+                            <dt>管理機能・集計自動化</dt>
+                            <dd>
+                                使用状況をリアルタイムで一覧確認可能。面倒な事後の集計作業が一切不要になります。
+                            </dd>
+
+                            <dt>従来の紙クーポンとの比較</dt>
+                            <dd>
+                                印刷コストゼロ、配布の手間なし、集計自動化。<br>
+                                運営のリソースを大幅に節約できます。
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ③ 大会Webサイト -->
+            <div class="content-card fade-in-up">
+                <div class="section-number">03</div>
+                <div class="card-header">
+                    <h2 class="card-title">大会Webサイト</h2>
+                    <p class="card-sub">「今、何をやってる？」がひと目でわかる。</p>
+                </div>
+
+                <div class="visual-area">
+                    <img src="https://pub-01c77f2b8a694685b04879178cd9e6f2.r2.dev/%E3%83%98%E3%82%9A%E3%83%BC%E3%82%B7%E3%82%99%E6%A1%88%E5%86%85.png" alt="Webサイト画面">
+                </div>
+
+                <div class="card-body">
+                    <p>
+                        現在時刻と連動して、今どのプログラムが進行中かをリアルタイム表示。<br>
+                        参加者が迷わない大会体験を実現しました。
+                    </p>
+
+                    <div class="detail-box">
+                        <div class="detail-title">こだわりポイント</div>
+                        <dl class="detail-list">
+                            <dt>デザインコンセプト</dt>
+                            <dd>
+                                可児のイメージである「夏祭り」「ハッピ」「赤色」をベースに、明智光秀生誕の地としての武将のイメージを取り入れました。
+                            </dd>
+
+                            <dt>AI活用で作成した要素</dt>
+                            <dd>
+                                トップページの「挑戦」の筆文字や、背景の赤い和紙テクスチャはAIを活用。<br>
+                                短期間・低コストでオリジナルのビジュアルを実現しています。
+                            </dd>
+
+                            <dt>機能面のこだわり（脱テンプレート）</dt>
+                            <dd>
+                                「現在時刻との連動」や「進行状況のリアルタイム表示」は、一般的なテンプレートサイトでは実装が困難です。<br>
+                                ゼロから開発することで、大会運営に本当に必要な機能を自由に設計しました。
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Section 6: 開発者紹介 + 動画 -->
+    <section class="section-dev">
+        <div class="dev-grid">
+            <!-- 左側：動画エリア -->
+            <div class="dev-video-area fade-in-up">
+                <video class="dev-video" autoplay muted loop playsinline>
+                    <source src="https://pub-01c77f2b8a694685b04879178cd9e6f2.r2.dev/profile-laptap.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+
+            <!-- 右側：情報エリア -->
+            <div class="dev-info-area fade-in-up" style="transition-delay: 0.2s;">
+                <span class="dev-label">開発担当</span>
+                <h3 class="dev-name">伊藤 寛</h3>
+                <p class="dev-role">可児YEG 所属</p>
+
+                <div class="dev-desc">
+                    <p>今回のシステムはすべてゼロから1人で開発。</p>
+                    <p style="margin-top:10px; font-weight:bold; color:var(--accent);">
+                        <i class="fas fa-trophy"></i> アプリ開発大会 3度優勝<br>
+                        <i class="fas fa-code"></i> 前田祐二氏の元で開発リーダーを経験
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-info">
+                <p>主催：岐阜県商工会議所青年部連合会</p>
+                <p>主管：可児商工会議所青年部</p>
+            </div>
+            <p style="font-size:0.8rem; opacity:0.6;">&copy; 2025 岐阜県商工会議所青年部連合会</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // スクロールアニメーション
+            const observerOptions = {
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            const elements = document.querySelectorAll('.fade-in-up');
+            elements.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
