@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>森光孝雅氏 プロフィール - 第23回岐阜県連大会 可児大会</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #8B2635;
+            --secondary: #1A1A1A;
+            --accent: #C9A961;
+            --bg-card: rgba(255, 255, 255, 0.95);
+            --bg-cream: #FFFDF5;
+            --bg-gray: #F5F5F5;
+            --text-main: #333333;
+            --text-sub: #666666;
+            --font-serif: 'Noto Serif JP', serif;
+            --font-sans: 'Noto Sans JP', sans-serif;
+            --font-en: 'Montserrat', sans-serif;
+        }
+
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-sans);
+            color: var(--text-main);
+            overflow-x: hidden;
+            background-color: white;
+        }
+
+        /* --- 共通ユーティリティ --- */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        h2.section-title {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--secondary);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        h2.section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+            margin: 10px auto 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 50px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(139, 38, 53, 0.3);
+            border: 2px solid var(--primary);
+            cursor: pointer;
+        }
+        .btn:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+        }
+
+        /* アニメーション用クラス */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .visible {
+            opacity: 1;
+            transform: translate(0, 0);
+        }
+
+        /* --- ナビゲーション（戻るボタン） --- */
+        .back-nav {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+        .back-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 30px;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .back-btn:hover {
+            transform: translateX(-5px);
+            background: white;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+
+        /* --- Section 1: ヒーロー --- */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: url('https://pub-01c77f2b8a694685b04879178cd9e6f2.r2.dev/wa-red-paper-background.jpg') no-repeat center center;
+            background-size: cover;
+            padding: 100px 0;
+            color: white;
+            overflow: hidden;
+        }
+        
+        .hero-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-img-box {
+            flex: 1;
+            max-width: 400px;
+            position: relative;
+        }
+
+        .hero-photo {
+            width: 100%;
+            /* 写真の比率に合わせて調整 */
+            height: auto; 
+            border-radius: 10px;
+            box-shadow: 20px 20px 0 rgba(0,0,0,0.3);
+            filter: brightness(1.05);
+        }
+
+        .hero-text {
+            flex: 1.2;
+        }
+
+        .hero-name {
+            font-family: var(--font-serif);
+            font-size: 3.5rem;
+            margin-bottom: 5px;
+            line-height: 1.1;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .hero-name-en {
+            font-family: var(--font-en);
+            font-size: 1.2rem;
+            opacity: 0.8;
+            letter-spacing: 0.1em;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .hero-position {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .hero-quote {
+            position: relative;
+            padding: 20px 0;
+            margin-bottom: 30px;
+        }
+        .hero-quote::before, .hero-quote::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent);
+            transition: width 1.5s ease-out;
+        }
+        .hero-quote::before { top: 0; }
+        .hero-quote::after { bottom: 0; }
+        .hero-quote.visible::before, .hero-quote.visible::after { width: 100%; }
+
+        .quote-text {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            color: var(--accent);
+            font-weight: bold;
+            line-height: 1.6;
+        }
+
+        .award-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(201, 169, 97, 0.2);
+            border: 1px solid var(--accent);
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            color: var(--accent);
+        }
+
+        /* --- Section 2: 講演情報 --- */
+        .section-info {
+            background: white;
+            padding: 80px 0;
+        }
+        
+        .info-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            padding: 60px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            border: 1px solid #eee;
+        }
+
+        .lecture-title {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-weight: 900;
+        }
+
+        .lecture-desc {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-sub);
+            margin-bottom: 40px;
+        }
+
+        .dl-btn {
+            background: var(--primary);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(139, 38, 53, 0.4);
+        }
+        .dl-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(139, 38, 53, 0.5);
+            background: #a32d3e;
+        }
+
+        /* --- Section 3: ストーリー（画像なしレイアウト調整） --- */
+        .section-story {
+            background: var(--bg-cream);
+            padding: 100px 0;
+            position: relative;
+        }
+        /* 縦の装飾ライン */
+        .section-story::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 0;
+            width: 1px;
+            background: var(--accent);
+            opacity: 0.2;
+            z-index: 0;
+        }
+
+        .story-chapter {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 100px;
+            position: relative;
+            z-index: 1;
+        }
+        .story-chapter:last-child { margin-bottom: 0; }
+
+        .story-content {
+            background: white;
+            padding: 50px;
+            max-width: 700px;
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            text-align: center;
+            border-top: 3px solid var(--accent);
+        }
+
+        .chapter-label {
+            font-family: var(--font-en);
+            font-weight: bold;
+            color: var(--accent);
+            display: block;
+            margin-bottom: 5px;
+            letter-spacing: 0.1em;
+        }
+        .chapter-title {
+            font-family: var(--font-serif);
+            font-size: 2.2rem;
+            color: var(--secondary);
+            margin-bottom: 30px;
+        }
+
+        .story-text {
+            line-height: 2.2;
+            margin-bottom: 30px;
+            text-align: justify;
+            text-justify: inter-ideograph; /* 日本語の均等割り付け */
+        }
+
+        .highlight-number {
+            font-family: var(--font-en);
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--primary);
+            line-height: 1.2;
+            display: block;
+            margin: 20px 0;
+            padding-bottom: 10px;
+        }
+        .highlight-number small {
+            font-size: 1rem;
+            font-weight: normal;
+            color: var(--text-main);
+            margin: 0 10px;
+        }
+
+        .quote-block {
+            background: var(--bg-cream);
+            padding: 30px;
+            border-radius: 8px;
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            font-style: italic;
+            margin: 20px 0;
+            color: var(--primary);
+            position: relative;
+        }
+        .quote-block::before {
+            content: '\f10d'; /* FontAwesome quote-left */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            font-size: 2rem;
+            color: var(--accent);
+            background: white;
+            padding: 0 10px;
+        }
+
+        /* --- Section 4: 信条・理念 --- */
+        .section-philosophy {
+            background: var(--primary);
+            background-image: url('https://pub-01c77f2b8a694685b04879178cd9e6f2.r2.dev/wa-red-paper-background.jpg');
+            background-blend-mode: multiply;
+            background-size: cover;
+            padding: 100px 0;
+            color: white;
+        }
+
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .philosophy-card {
+            background: white;
+            color: var(--text-main);
+            padding: 50px 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            opacity: 0;
+            transform: perspective(1000px) rotateY(20deg) translateY(30px);
+            transition: all 0.8s ease;
+        }
+        .philosophy-card.visible {
+            opacity: 1;
+            transform: perspective(1000px) rotateY(0) translateY(0);
+        }
+
+        .card-label {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .card-text {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            font-weight: bold;
+            line-height: 1.8;
+        }
+
+        /* --- Section 5: 略歴タイムライン --- */
+        .section-timeline {
+            background: white;
+            padding: 100px 0;
+        }
+
+        .timeline-box {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            padding-left: 40px;
+        }
+        .timeline-line {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2px;
+            height: 0;
+            background: #ddd;
+            transition: height 2s ease-out;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateX(20px);
+            transition: all 0.5s ease;
+        }
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .timeline-point {
+            position: absolute;
+            left: -44px;
+            top: 5px;
+            width: 10px;
+            height: 10px;
+            background: var(--secondary);
+            border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 0 0 0 2px #ddd;
+        }
+        .timeline-item.highlight .timeline-point {
+            background: var(--accent);
+            box-shadow: 0 0 0 2px var(--accent);
+            transform: scale(1.2);
+        }
+
+        .year {
+            font-family: var(--font-en);
+            font-weight: bold;
+            font-size: 1.1rem;
+            display: inline-block;
+            width: 80px;
+            color: var(--primary);
+        }
+
+        .event-text {
+            display: inline-block;
+            font-size: 1rem;
+        }
+        .timeline-item.highlight .event-text {
+            font-weight: bold;
+            background: linear-gradient(to top, rgba(201,169,97,0.2) 40%, transparent 40%);
+        }
+        
+        .timeline-crisis {
+            color: #d32f2f;
+            font-weight: bold;
+            margin: 20px 0;
+            text-align: center;
+            border-top: 1px dashed #ddd;
+            border-bottom: 1px dashed #ddd;
+            padding: 10px;
+        }
+
+        /* --- Section 6: 企業情報（画像なし） --- */
+        .section-company {
+            background: var(--bg-gray);
+            padding: 80px 0;
+        }
+
+        .company-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 60px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .info-list dl {
+            display: flex;
+            flex-wrap: wrap;
+            border-bottom: 1px solid #eee;
+            padding: 15px 0;
+        }
+        .info-list dt {
+            width: 150px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        .info-list dd {
+            width: calc(100% - 150px);
+            margin: 0;
+        }
+        
+        .external-link {
+            display: block;
+            text-align: center;
+            margin-top: 40px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: bold;
+            border: 1px solid var(--primary);
+            padding: 10px;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        .external-link:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* --- Section 7: 受賞・メディア --- */
+        .section-media {
+            background: white;
+            padding: 80px 0;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .tab-btn {
+            background: transparent;
+            border: 1px solid #ddd;
+            padding: 10px 30px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+            color: var(--text-sub);
+        }
+        .tab-btn.active {
+            background: var(--secondary);
+            color: white;
+            border-color: var(--secondary);
+        }
+
+        .tab-content {
+            display: none;
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeIn 0.5s;
+        }
+        .tab-content.active { display: block; }
+        
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .media-list li {
+            margin-bottom: 15px;
+            padding-left: 20px;
+            position: relative;
+            list-style: none;
+        }
+        .media-list li::before {
+            content: '•';
+            color: var(--accent);
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: -5px;
+        }
+
+        /* --- Section 8: CTA --- */
+        .section-cta {
+            background: var(--primary);
+            background-image: url('https://pub-01c77f2b8a694685b04879178cd9e6f2.r2.dev/wa-red-paper-background.jpg');
+            background-blend-mode: multiply;
+            background-size: cover;
+            padding: 100px 0;
+            text-align: center;
+            color: white;
+        }
+
+        .cta-copy {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            line-height: 1.4;
+        }
+
+        .cta-info {
+            font-size: 1.2rem;
+            margin-bottom: 50px;
+            opacity: 0.9;
+        }
+
+        .cta-btn {
+            background: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+            padding: 15px 50px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .cta-btn:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        /* --- Section 9: Footer --- */
+        footer {
+            background: var(--secondary);
+            color: #888;
+            padding: 50px 0 20px;
+            text-align: center;
+        }
+        .footer-info p { margin: 5px 0; }
+
+        /* --- レスポンシブ --- */
+        @media (max-width: 768px) {
+            .hero-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-text { text-align: center; }
+            .hero-name { font-size: 2.5rem; }
+            .hero-photo { width: 80%; max-width: 300px; margin-bottom: 30px; }
+            
+            .story-content {
+                padding: 30px 20px;
+            }
+            .highlight-number { font-size: 2rem; }
+
+            .company-container {
+                padding: 30px 20px;
+            }
+            .info-list dt { width: 100%; margin-bottom: 5px; }
+            .info-list dd { width: 100%; margin-bottom: 15px; }
+
+            .cta-copy { font-size: 1.8rem; }
+            .section-story::before { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 戻るナビゲーション -->
+    <div class="back-nav">
+        <!-- ご指定のURLへ変更 -->
+        <a href="https://yeg.shepherd-ai.com/" class="back-btn">
+            <i class="fas fa-arrow-left"></i> 大会ページへ戻る
+        </a>
+    </div>
+
+    <!-- Section 1: ヒーロー -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-img-box fade-in-left">
+                <!-- ご提供いただいた画像 -->
+                <img src="https://pub-01c77f2b8a694685b04879178cd9e6f2.r2.dev/%E5%85%AB%E5%A4%A9%E5%A0%82%E3%80%80%E6%A3%AE%E5%85%89%E3%81%95%E3%82%93.png" alt="森光孝雅" class="hero-photo">
+            </div>
+            <div class="hero-text fade-in-right">
+                <h1 class="hero-name">森光 孝雅</h1>
+                <span class="hero-name-en">Takamasa Morimitsu</span>
+                <div class="hero-position">
+                    株式会社八天堂 代表取締役<br>
+                    三原商工会議所 会頭
+                </div>
+                
+                <div class="hero-quote">
+                    <p class="quote-text">
+                        "事を成すは逆境にあり<br>
+                        事を破るは順境にあり"
+                    </p>
+                </div>
+
+                <div class="award-badge fade-in-up">
+                    <i class="fas fa-medal"></i>
+                    第23回 渋沢栄一賞 受賞 (2025.1)
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: 講演情報 -->
+    <section class="section-info">
+        <div class="container">
+            <div class="info-card fade-in-up">
+                <h2 class="lecture-title">逆境からの挑戦<br>〜俺たちの未来〜</h2>
+                <p class="lecture-desc">
+                    倒産の危機から年商45億円企業へのV字回復。<br>
+                    スイーツパン市場を切り拓いたイノベーションの裏側と、<br>
+                    逆境を力に変える経営哲学を余すことなく語ります。
+                </p>
+                <a href="https://drive.google.com/file/d/1ywTr_LUtcGqiVUK80Y4EB1OIA4FggNNO/view?usp=sharing" target="_blank" class="dl-btn">
+                    <i class="fas fa-file-pdf"></i> 講演資料PDFをダウンロード
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: ストーリー（画像なし・テキスト重視レイアウト） -->
+    <section class="section-story">
+        <div class="container">
+            <h2 class="section-title">STORY</h2>
+
+            <!-- Chapter 1 -->
+            <div class="story-chapter fade-in-up">
+                <div class="story-content">
+                    <span class="chapter-label">Chapter 1</span>
+                    <h3 class="chapter-title">原 点</h3>
+                    <p class="story-text">
+                        1964年、広島県三原市に生まれる。<br>
+                        大学中退後、神戸の名店フロインドリーブでパン職人として4年半の修行を積む。
+                        1991年、26歳で祖父の代から続く店を継ぎ、「たかちゃんのぱん屋」を開業。
+                        焼きたてのパンの香りに包まれた、挑戦の始まりだった。
+                    </p>
+                </div>
+            </div>
+
+            <!-- Chapter 2 -->
+            <div class="story-chapter fade-in-up">
+                <div class="story-content">
+                    <span class="chapter-label">Chapter 2</span>
+                    <h3 class="chapter-title">転 落</h3>
+                    <p class="story-text">
+                        順調に業績を伸ばし、10年足らずで県内13店舗まで拡大。<br>
+                        しかし、無理な店舗拡大が祟り、資金繰りは急速に悪化。<br>
+                        債務超過に陥り、民事再生手続きを目前にする倒産危機に直面する。
+                    </p>
+                    <div class="highlight-number">
+                        <span class="counter" data-target="13">0</span>店舗 <small>→</small> 倒産危機
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter 3 -->
+            <div class="story-chapter fade-in-up">
+                <div class="story-content">
+                    <span class="chapter-label">Chapter 3</span>
+                    <h3 class="chapter-title">転 機</h3>
+                    <div class="quote-block">
+                        「兄貴、これで最後の勝負をしてくれ」
+                    </div>
+                    <p class="story-text">
+                        絶望の淵にいた時、弟が全財産の2000万円を差し出した。<br>
+                        この想いに応えなければならない。<br>
+                        「事を成すは逆境にあり」。<br>
+                        この体験が、その言葉の真の意味を教えてくれた。
+                    </p>
+                </div>
+            </div>
+
+            <!-- Chapter 4 -->
+            <div class="story-chapter fade-in-up">
+                <div class="story-content">
+                    <span class="chapter-label">Chapter 4</span>
+                    <h3 class="chapter-title">革 新</h3>
+                    <p class="story-text">
+                        ドラッカーの「選択と集中」を断行。<br>
+                        2008年、周囲の大反対を押し切り、100種類以上あった商品を「冷やして食べるくりーむパン」1点に絞る。<br>
+                        それは、「スイーツパン」という全く新しいジャンルの確立だった。
+                    </p>
+                    <div class="highlight-number">
+                        100種類 <small>→</small> <span class="counter" data-target="1">100</span>点
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter 5 -->
+            <div class="story-chapter fade-in-up">
+                <div class="story-content">
+                    <span class="chapter-label">Chapter 5</span>
+                    <h3 class="chapter-title">現 在</h3>
+                    <p class="story-text">
+                        現在は1日約7万個を製造し、国内外へ展開。<br>
+                        2023年に創業90周年を迎え、2025年には渋沢栄一賞を受賞。<br>
+                        逆境を乗り越えた先には、想像もしなかった未来が広がっていた。
+                    </p>
+                    <div class="highlight-number">
+                        倒産危機 <small>→</small> 年商<span class="counter" data-target="45">0</span>億円
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: 信条・理念 -->
+    <section class="section-philosophy">
+        <div class="container">
+            <h2 class="section-title" style="color:white; text-shadow:0 2px 5px rgba(0,0,0,0.3);">PHILOSOPHY</h2>
+            <div class="philosophy-grid">
+                <div class="philosophy-card">
+                    <span class="card-label">信条</span>
+                    <div class="card-text">
+                        八天堂は<br>社員のために、<br>
+                        お品は<br>お客様のために、<br>
+                        利益は<br>未来のために
+                    </div>
+                </div>
+                <div class="philosophy-card" style="transition-delay: 0.2s;">
+                    <span class="card-label">経営理念</span>
+                    <div class="card-text">
+                        良い品、<br>
+                        良い人、<br>
+                        良い会社づくり
+                    </div>
+                </div>
+                <div class="philosophy-card" style="transition-delay: 0.4s;">
+                    <span class="card-label">大切にしている言葉</span>
+                    <div class="card-text">
+                        事を成すは<br>逆境にあり、<br>
+                        事を破るは<br>順境にあり
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: 略歴タイムライン -->
+    <section class="section-timeline">
+        <div class="container">
+            <h2 class="section-title">HISTORY</h2>
+            <div class="timeline-box">
+                <div class="timeline-line"></div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-point"></div>
+                    <span class="year">1964</span>
+                    <span class="event-text">広島県三原市生まれ</span>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-point"></div>
+                    <span class="year">1986</span>
+                    <span class="event-text">パン職人修行開始（神戸フロインドリーブ）</span>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-point"></div>
+                    <span class="year">1991</span>
+                    <span class="event-text">「たかちゃんのぱん屋」開店</span>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-point"></div>
+                    <span class="year">1997</span>
+                    <span class="event-text">三代目代表取締役就任</span>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-crisis">
+                        <i class="fas fa-chevron-down"></i> 倒産危機の転換期 <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+
+                <div class="timeline-item highlight">
+                    <div class="timeline-point"></div>
+                    <span class="year">2008</span>
+                    <span class="event-text">冷やして食べる「くりーむパン」開発</span>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-point"></div>
+                    <span class="year">2016</span>
+                    <span class="event-text">八天堂ビレッジ開設</span>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-point"></div>
+                    <span class="year">2019</span>
+                    <span class="event-text">三原商工会議所会頭就任</span>
+                </div>
+                <div class="timeline-item highlight">
+                    <div class="timeline-point"></div>
+                    <span class="year">2025</span>
+                    <span class="event-text">第23回渋沢栄一賞受賞</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: 企業情報（画像なし・センターレイアウト） -->
+    <section class="section-company">
+        <div class="container">
+            <h2 class="section-title">COMPANY</h2>
+            <div class="company-container fade-in-up">
+                <h3 style="font-size:1.5rem; margin-bottom:30px; text-align:center;">株式会社八天堂</h3>
+                <div class="info-list">
+                    <dl><dt>創業</dt><dd>1933年（昭和8年）</dd></dl>
+                    <dl><dt>本社</dt><dd>広島県三原市本郷町全入寺用倉山10064-190</dd></dl>
+                    <dl><dt>代表者</dt><dd>代表取締役 森光 孝雅</dd></dl>
+                    <dl><dt>従業員数</dt><dd>約250名</dd></dl>
+                    <dl><dt>売上高</dt><dd>45億円（2024年度）</dd></dl>
+                    <dl><dt>事業内容</dt><dd>和洋菓子の製造・販売、体験型テーマパーク運営、福祉連携事業</dd></dl>
+                    <dl><dt>展開エリア</dt><dd>日本国内、韓国、台湾、フィリピン、シンガポール 他</dd></dl>
+                </div>
+                <a href="https://hattendo.jp/" target="_blank" class="external-link">
+                    <i class="fas fa-external-link-alt"></i> 八天堂 公式サイト
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 7: 受賞・メディア -->
+    <section class="section-media">
+        <div class="container">
+            <h2 class="section-title">ACHIEVEMENT</h2>
+            
+            <div class="tabs">
+                <button class="tab-btn active" onclick="openTab('awards')">受賞歴</button>
+                <button class="tab-btn" onclick="openTab('media')">メディア出演</button>
+                <button class="tab-btn" onclick="openTab('lectures')">講演実績</button>
+            </div>
+
+            <div id="awards" class="tab-content active">
+                <ul class="media-list">
+                    <li>
+                        <strong>第23回 渋沢栄一賞（2025年1月）</strong><br>
+                        <small>理由：スイーツパン市場の確立による経営革新と、地域活性化・福祉連携による社会貢献。</small>
+                    </li>
+                    <li>日本ニュービジネス協議会 日本ニュービジネス優秀賞</li>
+                </ul>
+            </div>
+            <div id="media" class="tab-content">
+                <ul class="media-list">
+                    <li>フジテレビ「奇跡体験!アンビリバボー」（2024年）</li>
+                    <li>テレビ東京「カンブリア宮殿」（2021年）</li>
+                    <li>テレビ東京「ガイアの夜明け」（2015年）</li>
+                    <li>月刊誌『PHP』、日経ビジネス、中国新聞 他多数</li>
+                </ul>
+            </div>
+            <div id="lectures" class="tab-content">
+                <ul class="media-list">
+                    <li>PHP研究所『PHP』創刊900号記念イベント特別講演</li>
+                    <li>広島県中小企業家同友会 三原支部例会</li>
+                    <li>各地商工会議所での記念講演 他多数</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 8: CTA -->
+    <section class="section-cta">
+        <div class="container fade-in-up">
+            <p class="cta-copy">逆境を力に変える思考法を、<br>可児で直接聴く。</p>
+            <div class="cta-info">
+                令和8年1月17日(土) 15:15〜<br>
+                可児市文化創造センター ala
+            </div>
+            <!-- 指定のURLへ変更 -->
+            <a href="https://yeg.shepherd-ai.com/" class="cta-btn">
+                大会ページへ戻る
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-info">
+                <p>主催：岐阜県商工会議所青年部連合会</p>
+                <p>主管：可児商工会議所青年部</p>
+            </div>
+            <p style="font-size:0.8rem; opacity:0.6;">&copy; 2025 岐阜県商工会議所青年部連合会</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- 1. スクロール連動アニメーション ---
+        document.addEventListener("DOMContentLoaded", function() {
+            const observerOptions = {
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        
+                        // タイムラインの線引き
+                        if(entry.target.classList.contains('timeline-box')) {
+                            entry.target.querySelector('.timeline-line').style.height = '100%';
+                        }
+                        
+                        // カウントアップの開始
+                        const counters = entry.target.querySelectorAll('.counter');
+                        counters.forEach(counter => {
+                            const target = +counter.getAttribute('data-target');
+                            const isReverse = target === 1; // 100 -> 1 の場合
+                            let count = isReverse ? 100 : 0;
+                            
+                            const updateCount = () => {
+                                const increment = target / 50; 
+                                
+                                if (!isReverse && count < target) {
+                                    count += Math.ceil(increment);
+                                    if(count > target) count = target;
+                                    counter.innerText = count;
+                                    setTimeout(updateCount, 30);
+                                } 
+                                else if (isReverse && count > target) {
+                                    count -= Math.ceil(increment); // 簡易減算
+                                    if(count < target) count = target;
+                                    counter.innerText = count;
+                                    setTimeout(updateCount, 30);
+                                } else {
+                                    counter.innerText = target;
+                                }
+                            };
+                            updateCount();
+                        });
+
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            const elements = document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right, .hero-quote, .philosophy-card, .timeline-item, .timeline-box, .company-container, .story-chapter');
+            elements.forEach(el => observer.observe(el));
+        });
+
+        // --- 2. タブ切り替え ---
+        function openTab(tabName) {
+            const contents = document.getElementsByClassName('tab-content');
+            for (let i = 0; i < contents.length; i++) {
+                contents[i].classList.remove('active');
+            }
+            const btns = document.getElementsByClassName('tab-btn');
+            for (let i = 0; i < btns.length; i++) {
+                btns[i].classList.remove('active');
+            }
+            
+            document.getElementById(tabName).classList.add('active');
+            // クリックされたボタンをアクティブに（簡易実装）
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
