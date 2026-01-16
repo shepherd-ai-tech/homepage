@@ -135,6 +135,7 @@
         .nav-links li:nth-child(3) { transition-delay: 0.3s; }
         .nav-links li:nth-child(4) { transition-delay: 0.4s; }
         .nav-links li:nth-child(5) { transition-delay: 0.5s; }
+        .nav-links li:nth-child(6) { transition-delay: 0.6s; }
 
 
         /* --- 共通クラス --- */
@@ -569,22 +570,40 @@
             transform: translateX(0);
         }
 
+        /* --- 現在進行中のイベント強調スタイル --- */
         .event-item.current-time .event-card:not(.ob-og-card) {
             border: 2px solid var(--accent);
             background: #fffdf5;
-            box-shadow: 0 0 20px rgba(201, 169, 97, 0.4);
+            /* 金色のパルスアニメーション */
+            box-shadow: 0 0 15px rgba(201, 169, 97, 0.6);
+            animation: pulse-gold 2s infinite;
+        }
+        
+        @keyframes pulse-gold {
+            0% { box-shadow: 0 0 10px rgba(201, 169, 97, 0.4); }
+            50% { box-shadow: 0 0 25px rgba(201, 169, 97, 0.8); border-color: #e3c478; }
+            100% { box-shadow: 0 0 10px rgba(201, 169, 97, 0.4); }
         }
         
         .event-item.current-time::before {
             content: 'NOW';
             position: absolute;
-            left: -50px;
-            top: 0;
+            left: -58px; /* 少し調整 */
+            top: -5px;   /* 少し調整 */
             background: var(--primary);
             color: white;
-            font-size: 0.7rem;
-            padding: 2px 5px;
-            border-radius: 3px;
+            font-size: 0.85rem;
+            padding: 4px 8px;
+            border-radius: 20px;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            z-index: 5;
+            animation: bounce-now 1s infinite alternate;
+        }
+        
+        @keyframes bounce-now {
+            from { transform: translateY(0); }
+            to { transform: translateY(-3px); }
         }
 
         .event-item::after {
@@ -601,7 +620,8 @@
 
         .event-item.current-time::after {
             background: var(--primary);
-            transform: scale(1.3);
+            transform: scale(1.5);
+            border-color: var(--accent);
         }
 
         .event-time {
@@ -829,6 +849,66 @@
             opacity: 1;
             transform: translateY(0);
             filter: blur(0);
+        }
+
+        /* --- DX Section (NEW) --- */
+        .section-dx {
+            padding-top: 50px;
+        }
+        .dx-card {
+            background: linear-gradient(135deg, #fdfbf7 0%, #fff 100%);
+            border: 1px solid var(--accent);
+            border-radius: 20px;
+            padding: 50px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .dx-content {
+            position: relative;
+            z-index: 2;
+        }
+        .dx-catchphrase {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin: 0 0 20px 0;
+            font-weight: 900;
+            letter-spacing: 0.1em;
+        }
+        .dx-text {
+            font-size: 1.2rem;
+            line-height: 2;
+            margin-bottom: 30px;
+            font-weight: bold;
+            color: var(--text-main);
+        }
+        .dx-btn {
+            background: var(--accent);
+            color: var(--secondary);
+            border: none;
+            box-shadow: 0 4px 10px rgba(201, 169, 97, 0.4);
+        }
+        .dx-btn:hover {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 6px 15px rgba(139, 38, 53, 0.4);
+        }
+        /* Background Decoration */
+        .dx-card::before {
+            content: '\f3cd'; /* FontAwesome mobile icon */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 10rem;
+            color: rgba(201, 169, 97, 0.1);
+            transform: rotate(15deg);
+            z-index: 1;
         }
 
         /* --- Section 7: 会場アクセス --- */
@@ -1063,6 +1143,9 @@
             .overview-card, .concept-card {
                 padding: 40px 20px;
             }
+            .dx-catchphrase {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
@@ -1084,6 +1167,7 @@
             <li><a href="#concept" onclick="toggleMenu()">大会趣旨</a></li>
             <li><a href="#timeline" onclick="toggleMenu()">スケジュール</a></li>
             <li><a href="#keynote" onclick="toggleMenu()">記念講演</a></li>
+            <li><a href="#dx" onclick="toggleMenu()">DXの取り組み</a></li>
             <li><a href="#access" onclick="toggleMenu()">会場アクセス</a></li>
         </ul>
     </div>
@@ -1340,6 +1424,29 @@
         </div>
     </section>
 
+    <!-- Section 6.5: DX Initiative (NEW) -->
+    <section class="section-dx" id="dx">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title-en">DX</h2>
+                <div class="section-title-ja">DXの取り組み</div>
+            </div>
+
+            <div class="dx-card fade-in-up">
+                <div class="dx-content">
+                    <h3 class="dx-catchphrase">「挑戦」</h3>
+                    <p class="dx-text">
+                        問い合わせ対応、クーポン管理、進行案内。<br>
+                        ぜんぶ、仕組みに任せました。
+                    </p>
+                    <a href="https://yeg.shepherd-ai.com/dx" target="_blank" class="btn dx-btn">
+                        取り組み詳細を見る <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Section 7: Access -->
     <section class="section-access" id="access">
         <div class="container">
@@ -1497,6 +1604,7 @@
 
             let now = new Date();
             
+            // デモモード用ロジック（テスト用）
             if(demoMode === 'day1') now = new Date('2026-01-16T18:00:00');
             if(demoMode === 'day2') now = new Date('2026-01-17T14:00:00');
 
@@ -1507,6 +1615,7 @@
 
             let activeTabId = null;
 
+            // デフォルトの表示判定
             if (now >= day1Start && now <= day1End) {
                 activeTabId = 'day1';
             } else if (now >= day2Start && now <= day2End) {
