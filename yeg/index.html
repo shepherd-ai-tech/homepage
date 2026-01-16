@@ -538,7 +538,7 @@
             transform: translateX(0);
         }
 
-        .event-item.current-time .event-card {
+        .event-item.current-time .event-card:not(.ob-og-card) {
             border: 2px solid var(--accent);
             background: #fffdf5;
             box-shadow: 0 0 20px rgba(201, 169, 97, 0.4);
@@ -592,6 +592,7 @@
             box-shadow: 0 3px 10px rgba(0,0,0,0.1);
             border-left: 5px solid var(--secondary);
             position: relative; /* Mapボタン配置用 */
+            margin-bottom: 10px; /* カードが重なる場合の間隔 */
         }
 
         .event-title {
@@ -656,6 +657,45 @@
         .timeline-map-btn:hover {
             background: var(--primary);
             color: white;
+        }
+
+        /* --- OB・OG サロン用特別カード --- */
+        .ob-og-card {
+            background: linear-gradient(135deg, #1A1A1A 0%, #333333 100%);
+            border-left: 5px solid var(--accent);
+            color: #fff;
+            margin-top: 15px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .ob-og-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+        }
+        .ob-og-card .event-title {
+            color: var(--accent);
+            font-family: var(--font-serif);
+        }
+        .ob-og-card .event-place {
+            color: #ddd;
+        }
+        .ob-og-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--secondary);
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-bottom: 5px;
+        }
+        .ob-og-card-footer {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(201, 169, 97, 0.3);
+            font-size: 0.9rem;
+            color: var(--accent);
+            text-align: right;
         }
 
         /* --- Section 6: 記念講演 --- */
@@ -840,6 +880,100 @@
         }
         .footer-info p {
             margin: 5px 0;
+        }
+
+        /* --- OB・OG詳細モーダル --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-overlay.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            background: #fff;
+            width: 90%;
+            max-width: 600px;
+            border-radius: 15px;
+            padding: 40px;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+            border-top: 8px solid var(--accent);
+        }
+
+        .modal-overlay.open .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.8rem;
+            color: var(--text-sub);
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .modal-close-btn:hover {
+            color: var(--primary);
+        }
+
+        .modal-title {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 5px;
+            text-align: center;
+        }
+        
+        .modal-subtitle {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            color: var(--text-sub);
+            text-align: center;
+            margin-bottom: 30px;
+            display: block;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 15px;
+        }
+
+        .modal-body {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--text-main);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .modal-info-box {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .modal-info-title {
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 10px;
+            display: block;
         }
 
         /* --- レスポンシブ調整 --- */
@@ -1086,13 +1220,26 @@
                         </div>
                     </div>
 
+                    <!-- 15:15 - 17:30 枠（記念事業 ＆ OBサロン） -->
                     <div class="event-item" data-time="2026-01-17T15:15:00" data-end="2026-01-17T17:30:00">
                         <span class="event-time">15:15 - 17:30</span>
+                        
+                        <!-- 通常イベント -->
                         <div class="event-card">
                             <a href="https://maps.google.com/?q=可児市文化創造センター" target="_blank" class="timeline-map-btn"><i class="fas fa-map-marker-alt"></i> Map</a>
                             <div class="event-title">記念事業</div>
                             <div class="event-place">@ala 小劇場</div>
                             <p>講演会 + 6単会ビジョン発表</p>
+                        </div>
+
+                        <!-- OB・OGサロン 特別カード（クリックでモーダル） -->
+                        <div class="event-card ob-og-card" onclick="openModal('obOgModal')">
+                            <span class="ob-og-badge">OB・OG対象</span>
+                            <div class="event-title">OB・OGサロン</div>
+                            <div class="event-place">@福祉センター 1階 和室</div>
+                            <div class="ob-og-card-footer">
+                                「続く、という選択」詳細を見る <i class="fas fa-chevron-circle-right"></i>
+                            </div>
                         </div>
                     </div>
 
@@ -1142,7 +1289,8 @@
                         <li>「カンブリア宮殿」等メディア出演多数</li>
                     </ul>
 
-                    <a href="#" class="btn">講師プロフィール詳細 <i class="fas fa-arrow-right"></i></a>
+                    <!-- リンク先修正 -->
+                    <a href="https://yeg.shepherd-ai.com/speaker" class="btn" target="_blank">講師プロフィール詳細 <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
@@ -1195,6 +1343,33 @@
         </div>
     </footer>
 
+    <!-- OB・OG Salon Modal -->
+    <div id="obOgModal" class="modal-overlay" onclick="closeModal(event, 'obOgModal')">
+        <div class="modal-content">
+            <span class="modal-close-btn" onclick="closeModal(null, 'obOgModal')">&times;</span>
+            
+            <h2 class="modal-title">続く、という選択</h2>
+            <span class="modal-subtitle">～ 語り合うOBサロン ～</span>
+            
+            <div class="modal-body">
+                <p>県内のOB・OGが一同に会し、<br>
+                YEGで培ってきた研鑽と交流の中で育まれた関係性を、<br>
+                あらためて確かめ合う場をご用意しました。</p>
+                <br>
+                <p>各地の地酒とともに、<br>
+                久しぶりに集う仲間との時間を、どうぞお楽しみください。</p>
+            </div>
+
+            <div class="modal-info-box">
+                <span class="modal-info-title"><i class="fas fa-map-pin"></i> 会場</span>
+                <p style="margin:0 0 10px;">可児市福祉センター １階 和室</p>
+                <a href="https://maps.google.com/?q=可児市福祉センター" target="_blank" class="btn" style="padding: 8px 20px; font-size: 0.9rem;">
+                    Google Mapで確認
+                </a>
+            </div>
+        </div>
+    </div>
+
     <script>
         function toggleMenu() {
             const overlay = document.getElementById('navOverlay');
@@ -1207,6 +1382,20 @@
             } else {
                 icon.classList.remove('fa-times');
                 icon.classList.add('fa-bars');
+            }
+        }
+
+        // Modal Functions
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.add('open');
+        }
+
+        function closeModal(event, modalId) {
+            // If clicked directly on overlay or close button
+            if (!event || event.target.classList.contains('modal-overlay')) {
+                const modal = document.getElementById(modalId);
+                modal.classList.remove('open');
             }
         }
 
