@@ -416,6 +416,37 @@
             .concept-body { text-align: center; }
         }
 
+        /* --- 会長動画エリア --- */
+        .president-message-container {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .president-video {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            margin-bottom: 15px;
+            background: #000;
+            object-fit: contain;
+        }
+        .president-title {
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            color: var(--text-sub);
+            margin-bottom: 5px;
+            display: block;
+        }
+        .president-name {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--primary);
+            letter-spacing: 0.1em;
+        }
+
         /* --- Section 4: 3つの価値 --- */
         .values-grid {
             display: grid;
@@ -1112,6 +1143,19 @@
                         <p>大決起祭・昼食交流会・大懇親会——3つの交流の場を通じて、メンバー間のつながりを深め、確かな絆を形成します。</p>
                         <br>
                         <p>伝統を継承し、未来を創造する。共に歩む仲間との絆を力に変える特別な一日へ。</p>
+                        
+                        <!-- 会長動画 追加エリア (自動再生・ループ・ミュート) -->
+                        <div class="president-message-container">
+                            <video class="president-video" autoplay loop muted playsinline>
+                                <source src="https://pub-01c77f2b8a694685b04879178cd9e6f2.r2.dev/video-1768531669977.mp4" type="video/mp4">
+                                お使いのブラウザは動画タグに対応していません。
+                            </video>
+                            <div class="president-info">
+                                <span class="president-title">岐阜県連大会可児大会 大会会長</span>
+                                <span class="president-name">齋藤 健太郎</span>
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
