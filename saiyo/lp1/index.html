@@ -461,13 +461,13 @@
             background: #fff;
         }
         
-        /* 修正：画像サイズをさらに80%に縮小（160px -> 128px） */
+        /* 修正：枠線を削除し、サイズを110%（128px*1.1=約141px）に拡大 */
         .case-image-mini {
             width: 100%;
-            max-width: 128px; /* 横幅を128pxに制限 */
+            max-width: 141px; /* サイズ拡大 */
             height: auto;
             border-radius: 5px;
-            border: 1px solid #eee;
+            /* border: 1px solid #eee;  ← 削除 */
             margin: 15px auto 0 auto; /* 上に余白、中央揃え */
             display: block;
         }
