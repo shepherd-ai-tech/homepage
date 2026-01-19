@@ -461,14 +461,23 @@
             background: #fff;
         }
         
-        /* 修正：枠線を削除し、サイズを110%（128px*1.1=約141px）に拡大 */
+        /* B社用の画像スタイル (141px) */
         .case-image-mini {
             width: 100%;
-            max-width: 141px; /* サイズ拡大 */
+            max-width: 141px; 
             height: auto;
             border-radius: 5px;
-            /* border: 1px solid #eee;  ← 削除 */
-            margin: 15px auto 0 auto; /* 上に余白、中央揃え */
+            margin: 15px auto 0 auto; 
+            display: block;
+        }
+
+        /* A社用の画像スタイル (170px) */
+        .case-image-large {
+            width: 100%;
+            max-width: 170px; /* 141pxの約120% */
+            height: auto;
+            border-radius: 5px;
+            margin: 15px auto 0 auto; 
             display: block;
         }
 
@@ -802,7 +811,7 @@
         <div class="container">
             <h2 class="section-title">選ばれる理由があります。</h2>
             
-            <!-- Case A -->
+            <!-- Case A (Larger Image) -->
             <div class="case-card">
                 <div class="case-header">介護施設A社の場合</div>
                 <div class="case-body">
@@ -812,12 +821,12 @@
                     <div class="case-after">
                         <strong>After：</strong>ペルソナを明確化した求人票にリライト。たった1万円の広告費・閲覧数100件で3名応募。2名が半年以上定着し、離職率も改善。
                     </div>
-                    <!-- 配置場所：Afterの後ろ -->
-                    <img src="https://i.gyazo.com/726eefe11fc6e565ff6d12bc4bf667de.png" alt="介護施設A社の実績グラフ" class="case-image-mini">
+                    <!-- 配置場所：Afterの後ろ (120% size: 170px) -->
+                    <img src="https://i.gyazo.com/726eefe11fc6e565ff6d12bc4bf667de.png" alt="介護施設A社の実績グラフ" class="case-image-large">
                 </div>
             </div>
 
-            <!-- Case B -->
+            <!-- Case B (Original Size) -->
             <div class="case-card">
                 <div class="case-header">施行会社B社の場合</div>
                 <div class="case-body">
@@ -827,7 +836,7 @@
                     <div class="case-after">
                         <strong>After：</strong>岐阜採用のミカタで広告費4分の1以下に。Instagram・Noteで会社の魅力を発信し、「この会社で働きたい」という問い合わせが自然と増加。
                     </div>
-                    <!-- 配置場所：Afterの後ろ -->
+                    <!-- 配置場所：Afterの後ろ (100% size: 141px) -->
                     <img src="https://i.gyazo.com/c60d6c88bb33901165cf1af0ff2c14e9.png" alt="施工会社B社の実績グラフ" class="case-image-mini">
                 </div>
             </div>
