@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>岐阜採用のミカタ - 言葉の力で採用を変える</title>
+    <meta name="description" content="岐阜県の中小企業専門。広告費を増やさず、言葉の力で欲しい人材を採用する岐阜採用のミカタ。">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- Reset & Base Styles --- */
+        :root {
+            --primary-color: #E87A2E; /* サイト画像のオレンジ */
+            --primary-hover: #D3651B;
+            --accent-color: #FFD700;
+            --text-color: #333333;
+            --bg-cream: #FFF9F2; /* サイト画像の薄い背景色 */
+            --bg-white: #FFFFFF;
+            --font-main: 'Noto Sans JP', sans-serif;
+            --bg-gray: #f5f5f5;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-main);
+            color: var(--text-color);
+            line-height: 1.8;
+            background-color: var(--bg-white);
+            font-size: 16px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            vertical-align: bottom;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- Utilities --- */
+        .text-center { text-align: center; }
+        .text-left { text-align: left; }
+        .text-primary { color: var(--primary-color); }
+        .text-bold { font-weight: 700; }
+        .bg-cream { background-color: var(--bg-cream); }
+        .sp-br { display: block; }
+        .pc-br { display: none; }
+        .mt-20 { margin-top: 20px; }
+        .mb-20 { margin-bottom: 20px; }
+        
+        @media (min-width: 768px) {
+            .sp-br { display: none; }
+            .pc-br { display: block; }
+        }
+
+        .highlight {
+            background: linear-gradient(transparent 60%, #fff200 60%);
+            font-weight: bold;
+        }
+
+        /* --- Buttons & CTA --- */
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: #fff;
+            font-weight: 900;
+            font-size: 1.2rem;
+            padding: 1.2rem 2rem;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(232, 122, 46, 0.4);
+            transition: all 0.3s ease;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            border: 2px solid #fff;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(232, 122, 46, 0.6);
+        }
+
+        .cta-label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        /* Button Pulse Animation */
+        .cta-pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(232, 122, 46, 0.7); }
+            70% { transform: scale(1.03); box-shadow: 0 0 0 15px rgba(232, 122, 46, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(232, 122, 46, 0); }
+        }
+
+        /* --- Header --- */
+        header {
+            padding: 15px 0;
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        .header-logo {
+            font-weight: 900;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .header-logo span {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            background: var(--primary-color);
+            border-radius: 50%;
+        }
+
+        /* --- Hero (First View) --- */
+        .hero {
+            margin-top: 60px; /* Header height */
+            /* 背景画像の設定 */
+            background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.7)), url('https://i.gyazo.com/f2da1c0c6df0d4a251205700ab4cb824.png');
+            background-size: cover;
+            background-position: center;
+            padding: 80px 0 60px;
+            position: relative;
+        }
+
+        .hero-content {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-copy {
+            font-size: 1.8rem;
+            font-weight: 900;
+            line-height: 1.4;
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+            text-shadow: 0 0 20px rgba(255,255,255,0.8);
+        }
+        
+        .hero-copy span {
+            color: var(--primary-color);
+            font-size: 120%;
+        }
+
+        .hero-sub {
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            font-weight: 500;
+            background: rgba(255,255,255,0.6);
+            display: inline-block;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .hero-cta-wrapper {
+            background: rgba(255,255,255,0.95);
+            padding: 20px;
+            border-radius: 15px;
+            display: inline-block;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            backdrop-filter: blur(5px);
+        }
+
+        .hero-guarantee {
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        @media (min-width: 768px) {
+            .hero { 
+                padding: 140px 0 120px; 
+                text-align: left; 
+                background-image: linear-gradient(90deg, rgba(255, 255, 255, 1) 40%, rgba(255, 255, 255, 0.6) 80%, rgba(255, 255, 255, 0) 100%), url('https://i.gyazo.com/f2da1c0c6df0d4a251205700ab4cb824.png');
+                background-position: center;
+            }
+            .hero-content { text-align: left; max-width: 700px; }
+            .hero-copy { font-size: 2.8rem; text-shadow: none; }
+            .hero-sub { font-size: 1.2rem; background: none; padding: 0; }
+            .hero-cta-wrapper { display: block; width: fit-content; }
+        }
+
+        /* --- Section Common --- */
+        section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 15px;
+            line-height: 1.4;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary-color);
+        }
+
+        /* --- Problem & Mistakes --- */
+        .mistake-box {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-left: 5px solid #999;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 0 5px 5px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .mistake-title {
+            font-weight: 900;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #333;
+            border-bottom: 1px dashed #ddd;
+            padding-bottom: 10px;
+        }
+        .mistake-title span {
+            color: #c0392b;
+            margin-right: 10px;
+        }
+        
+        .problem-intro {
+            text-align: center;
+            margin-bottom: 40px;
+            font-weight: bold;
+        }
+
+        /* --- Agitate --- */
+        .agitate {
+            background-color: #fff;
+        }
+        .reason-box {
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            background-color: var(--bg-cream);
+        }
+
+        /* --- Solution --- */
+        .solution {
+            background-color: var(--bg-cream);
+        }
+        .service-intro {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        .feature-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .feature-num {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            font-weight: 900;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .feature-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+        
+        @media (min-width: 768px) {
+            .features-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        /* --- Proof & Cases --- */
+        .case-card {
+            border: 1px solid #eee;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            background: #fff;
+        }
+        .case-header {
+            background: #333;
+            color: #fff;
+            padding: 10px 20px;
+            font-weight: bold;
+        }
+        .case-body {
+            padding: 20px;
+        }
+        .case-before, .case-after {
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+        .case-before { background: #f0f0f0; color: #666; }
+        .case-after { background: #e6f7ff; color: #005a8d; border: 1px solid #b3e0ff; }
+        
+        .success-fail-box {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        .sf-item {
+            padding: 20px;
+            border-radius: 8px;
+            color: #fff;
+            font-weight: bold;
+        }
+        .sf-success { background: #27ae60; }
+        .sf-fail { background: #7f8c8d; }
+
+        @media (min-width: 768px) {
+            .success-fail-box { grid-template-columns: 1fr 1fr; }
+        }
+
+        .testimonial {
+            background: var(--bg-cream);
+            padding: 30px;
+            border-radius: 10px;
+            position: relative;
+            margin-top: 40px;
+            font-style: italic;
+        }
+        .testimonial::before {
+            content: '“';
+            font-size: 80px;
+            color: rgba(232, 122, 46, 0.2);
+            position: absolute;
+            top: -20px;
+            left: 10px;
+            font-family: serif;
+        }
+
+        /* --- Data & Authority --- */
+        .data-section {
+            background-color: #fff;
+        }
+        .data-box {
+            border: 2px solid #333;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        .data-label {
+            background: #333;
+            color: #fff;
+            display: inline-block;
+            padding: 5px 15px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        /* --- Future --- */
+        .future-section {
+            background: linear-gradient(180deg, #fff 0%, #f9f9f9 100%);
+            text-align: center;
+        }
+        .future-text {
+            font-size: 1.1rem;
+            line-height: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* --- Offer --- */
+        .offer {
+            background: linear-gradient(135deg, #fff 0%, #fffbf5 100%);
+            border: 3px solid var(--primary-color);
+            border-radius: 15px;
+            padding: 40px 20px;
+            text-align: center;
+            max-width: 800px;
+            margin: 60px auto;
+            position: relative;
+        }
+        .offer-badge {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #d32f2f;
+            color: #fff;
+            padding: 10px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        /* --- Closing --- */
+        .closing-section {
+            background: #f5f5f5;
+            text-align: center;
+        }
+        .closing-copy {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+        .closing-copy p {
+            margin-bottom: 15px;
+        }
+
+        /* --- CTA Section --- */
+        .cta-section {
+            background-color: var(--primary-color);
+            color: #fff;
+            text-align: center;
+            padding: 80px 0;
+        }
+        .cta-section .section-title {
+            color: #fff;
+        }
+        .cta-section .section-title::after {
+            background-color: #fff;
+        }
+        .cta-section .cta-button {
+            background-color: #fff;
+            color: var(--primary-color);
+            border: none;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .cta-section .cta-label {
+            color: #fff;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.8rem;
+        }
+
+        /* --- Sticky CTA for Mobile --- */
+        .sticky-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.95);
+            padding: 10px 20px;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            z-index: 999;
+            text-align: center;
+            display: block;
+        }
+        .sticky-cta .cta-button {
+            padding: 10px;
+            font-size: 1rem;
+            width: 100%;
+        }
+        @media (min-width: 768px) {
+            .sticky-cta { display: none; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-logo">
+                <span></span> 岐阜採用のミカタ
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-copy">
+                    その求人、まだ<br class="pc-br">「お金をかければ応募が来る」と<br class="sp-br">思っていませんか？
+                </h1>
+                <p class="hero-sub">
+                    毎月20万円、30万円と求人広告費をかけても、欲しい人材が来ない本当の理由――<br>
+                    実は、<strong>広告費の問題ではありませんでした。</strong>
+                </p>
+                <div class="hero-cta-wrapper">
+                    <span class="hero-guarantee">＼ 成果が出なければ全額返金保証 ／</span>
+                    <!-- 指示1: リンク追加（トップ） -->
+                    <a href="https://app.aitemasu.me/u/info278/gifusaiyo" class="cta-button cta-pulse">【無料相談に申し込む】</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 1: Problems / Mistakes -->
+    <section class="problem bg-cream">
+        <div class="container">
+            <h2 class="section-title">岐阜県の中小企業が陥りがちな<br>「3つの致命的な間違い」</h2>
+            
+            <div class="problem-intro">
+                <p>求人に毎月何十万円もかけているのに、欲しい職種の応募が来ない。<br>事務員は集まるのに、施工管理・介護・運送ドライバーなど現場人材が集まらない。<br>そんなお悩みを抱えていませんか？</p>
+                <p class="mt-20 highlight" style="display:inline-block;">もし以下のどれかに当てはまるなら、採用の「常識」を疑うべき時が来ています。</p>
+            </div>
+
+            <!-- Mistake 1 -->
+            <div class="mistake-box">
+                <h3 class="mistake-title"><span>間違い①</span>「広告費を増やせば応募が増える」と思っている</h3>
+                <p>求人代理店に「もっと予算を増やしましょう」と言われ、広告費を上げてみた。それでも応募が増えない。</p>
+                <p class="mt-20">それもそのはず。<strong>問題は「量」ではなく「質」だから</strong>です。</p>
+                <p>実は、岐阜県のある介護施設では、たった1万円の広告費、閲覧数100件で3名の応募を獲得しました。150万円が相場と言われる介護業界で、です。</p>
+                <p class="mt-20">広告費を増やすことが採用成功のカギ――<span class="text-bold text-primary">この常識、間違いです。</span></p>
+            </div>
+
+            <!-- Mistake 2 -->
+            <div class="mistake-box">
+                <h3 class="mistake-title"><span>間違い②</span>「誰でも歓迎」と書けば応募が増えると思っている</h3>
+                <p>「未経験歓迎」「アットホームな職場」「やる気のある方大歓迎」<br>こんなフレーズ、御社の求人票にも入っていませんか？</p>
+                <p class="mt-20">実はこれ、<strong>誰にも響かない言葉</strong>なんです。</p>
+                <p>ターゲットを絞ることを恐れて、当たり障りのない文章にした結果どうなるか？<br><strong>ターゲット外の人ばかりが応募し、ミスマッチ・早期離職が発生。</strong></p>
+                <p class="mt-20">厚生労働省の調査によると、離職率は15.4%。早期離職の原因の多くは「入社前のイメージと実際のギャップ」です。<br>つまり、<strong>求職者の心に刺さらない求人票こそが、ミスマッチの元凶</strong>なのです。</p>
+            </div>
+
+            <!-- Mistake 3 -->
+            <div class="mistake-box">
+                <h3 class="mistake-title"><span>間違い③</span>「代理店に任せておけば大丈夫」と思っている</h3>
+                <p>「プロに任せているから安心」 「何が悪いかわからないから、とりあえず続けている」。その気持ち、よくわかります。</p>
+                <p class="mt-20">でも、こう考えたことはありませんか？<br><strong>「代理店は"広告費を使わせること"が仕事になっていないか？」</strong></p>
+                <p>多くの代理店は、テンプレートの使い回しで大量の企業を回しています。御社の魅力を本気で伝えようとしているでしょうか？<br>そして、IndeedやSNSなど<strong>無料〜低コストで採用できる方法</strong>があることを、教えてくれましたか？</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Agitate (Cause) -->
+    <section class="agitate">
+        <div class="container">
+            <h2 class="section-title">なぜ、こんな間違いが起きるのか？</h2>
+            <div class="reason-box">
+                <p style="font-size:1.2rem; font-weight:bold; margin-bottom:20px;">答えはシンプルです。</p>
+                <p style="font-size:1.4rem; font-weight:900; margin-bottom:30px;"><span class="highlight">求職者が本当に知りたい情報が、<br class="sp-br">求人票にないから。</span></p>
+                
+                <p class="text-left" style="max-width:700px; margin:0 auto;">
+                    求職者が知りたいのは、給与や休日だけではありません。<br><br>
+                    「この会社で働いたら、どんな毎日になるんだろう？」<br>
+                    「どんな人たちと一緒に働くんだろう？」<br>
+                    「自分はここでやっていけるだろうか？」<br><br>
+                    つまり、<strong>職場の雰囲気、働く人の声、会社のストーリー</strong>――これらが求人票に書かれていないのです。<br>
+                    スペック勝負では大企業に勝てません。<br>
+                    でも、<strong>「言葉の力」で御社の魅力を伝えれば、中小企業でも選ばれる存在になれる</strong>のです。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Solution -->
+    <section class="solution">
+        <div class="container">
+            <h2 class="section-title">「言葉の力」で採用を変える。<br>岐阜採用のミカタ</h2>
+            
+            <div class="service-intro">
+                <p style="font-size:1.1rem;">
+                    <strong>岐阜採用のミカタ</strong>は、岐阜県限定・中小企業専門の採用マーケティング代行サービスです。<br>
+                    月額10万円〜のチケット制で、求人票リライト、Instagram投稿、Indeed企業ページ整備など、採用に必要な施策をプロが"まるっと"代行します。
+                </p>
+            </div>
+
+            <h3 class="text-center mb-20 text-primary text-bold">私たちが選ばれる3つの理由</h3>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <span class="feature-num">Feature 01</span>
+                    <h3 class="feature-title">リクルートMVP受賞の<br>プロライターがチームに在籍</h3>
+                    <p>テンプレートの使い回しは一切しません。御社の想いや魅力を丁寧にヒアリングし、「求職者の心に届く言葉」に変換します。</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-num">Feature 02</span>
+                    <h3 class="feature-title">トータル改善に強い</h3>
+                    <p>他社はIndeedなど単体媒体に強い場合が多いですが、私たちは幅広い媒体・SNS運用を熟知。御社の予算に応じて最適化し、採用の仕組みをトータルで整えます。</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-num">Feature 03</span>
+                    <h3 class="feature-title">コンサルティング形式で<br>最適な採用施策を提案</h3>
+                    <p>「広告費を増やせ」とは言いません。現状の課題を徹底的に分析し、本当に必要な施策だけをご提案します。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Proof / Cases -->
+    <section class="proof">
+        <div class="container">
+            <h2 class="section-title">実際に成果を出した企業様の声</h2>
+            
+            <div class="testimonial">
+                <p>「毎月代理店に20万円以上かけても成果なし。岐阜採用のミカタに切り替えたら、広告費は4分の1以下に。SNS（Instagram・Note）で信頼が増え、資産が積み上がる仕組みができました。広告費をかけなくても人が集まる新常識を知りました」</p>
+            </div>
+
+            <h3 class="text-center mt-20 mb-20">ビフォー・アフター事例</h3>
+            
+            <!-- Case A -->
+            <div class="case-card">
+                <div class="case-header">【介護施設A社様】</div>
+                <div class="case-body">
+                    <div class="case-before">
+                        <strong>Before：</strong>テンプレート求人を掲載し続けるも、応募者の質が低く、採用してもすぐ離職。採用コストが膨らむ一方。
+                    </div>
+                    <div class="case-after">
+                        <strong>After：</strong>ペルソナを明確化し、求人票を全面リライト。たった1万円の広告費・閲覧数100件で3名応募。2名が半年以上定着し、離職率も大幅改善。
+                        <!-- 指示2: 証拠画像を小さく挿入 -->
+                        <div style="margin-top:15px;">
+                            <img src="https://i.gyazo.com/726eefe11fc6e565ff6d12bc4bf667de.png" alt="採用実績データ" style="max-width:200px; border:1px solid #eee; display:block;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="text-center mt-20 mb-20">成功と失敗の分かれ道</h3>
+            <div class="success-fail-box">
+                <div class="sf-item sf-success">
+                    <div style="font-size:1.2rem; margin-bottom:10px;">【成功パターン】</div>
+                    ターゲットを絞った求人票に変更<br>↓<br>1万円で3名応募、長く定着
+                </div>
+                <div class="sf-item sf-fail">
+                    <div style="font-size:1.2rem; margin-bottom:10px;">【失敗パターン】</div>
+                    「誰でも歓迎」でターゲット絞りを拒否<br>↓<br>期待と違う人ばかり応募、ミスマッチ・早期離職続きで採用コスト膨張
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Section 5: Data / Authority -->
+    <section class="data-section">
+        <div class="container">
+            <h2 class="section-title">時代は変わった。あなたの採用手法は？</h2>
+            
+            <div class="data-box">
+                <span class="data-label">データ①</span>
+                <p>岐阜県の正社員人手不足割合は52.3%（2025年1月時点）。コロナ禍以降で最高水準に。</p>
+            </div>
+
+            <div class="data-box">
+                <span class="data-label">データ②</span>
+                <p>ネオキャリア調査によると、求職者の70%が企業SNS・ブログをチェックして応募判断。若年層はSNS投稿を特に重視。</p>
+            </div>
+
+            <div class="text-center mt-20">
+                <p style="font-size:1.2rem; font-weight:bold;">つまり、無料SNS採用は中小企業にも「必須」の時代。</p>
+                <p>それなのに、まだ高額な広告費だけに頼り続けますか？</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: Future -->
+    <section class="future-section">
+        <div class="container">
+            <h2 class="section-title">想像してみてください</h2>
+            <div class="future-text">
+                <p>広告費を半分以下に抑えながら、欲しい職種の応募が安定して入ってくる日々を。</p>
+                <p>「この会社で働きたい」と目を輝かせる求職者が面接に来る姿を。</p>
+                <p>採用した人が長く定着し、既存社員の負担が減り、職場の雰囲気がどんどん良くなっていくことを。</p>
+                <p>採用コストが大幅に削減され、経営に余裕が生まれることを。</p>
+                <p class="mt-20 highlight" style="display:inline-block; font-size:1.3rem;">その未来は、「言葉の力」で実現できます。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 7: Offer -->
+    <section class="offer">
+        <h2 class="section-title" style="margin-bottom:20px;">まずは無料相談へ</h2>
+        <p class="text-left" style="margin-bottom:20px; text-align:center;">
+            「うちの採用、何が問題なんだろう？」<br>
+            その疑問を解消する第一歩として、<strong>無料相談</strong>をご用意しました。
+        </p>
+        <p class="text-left" style="text-align:center;">
+            御社の現状をヒアリングし、最適な採用戦略をご提案。難しいことはすべてプロにお任せください。
+        </p>
+
+        <div style="background:#fff; border:1px dashed var(--primary-color); padding:20px; margin:30px 0; text-align:left;">
+            <h3 class="text-primary text-center" style="margin-bottom:10px;">今すぐ無料相談に申し込む方はこちら</h3>
+            <ul style="list-style:none; text-align:center; line-height:2;">
+                <li><strong>【特典】</strong> ご契約いただいた方には、採用LP（ランディングページ）を作成してプレゼント！</li>
+                <li><strong>【安心保証】</strong> 求人票の成果が出なかったら全額返金。だから安心してお試しいただけます。</li>
+            </ul>
+        </div>
+
+        <!-- 指示1: リンク追加（オファー） -->
+        <a href="https://app.aitemasu.me/u/info278/gifusaiyo" class="cta-button cta-pulse" style="margin-top:20px;">【今すぐ無料相談に申し込む】</a>
+    </section>
+
+    <!-- Closing -->
+    <section class="closing-section">
+        <div class="container">
+            <h2 class="section-title">あなたは「正しい道」を選べます</h2>
+            
+            <div class="closing-copy">
+                <p>広告費を増やせば応募が来る――<br><span class="text-primary">この常識は、もう終わりです。</span></p>
+                <p>「誰でも歓迎」で応募が増える――<br><span class="text-primary">この幻想から、目を覚ましてください。</span></p>
+                <p>代理店に任せておけば大丈夫――<br><span class="text-primary">その思い込みが、採用を遠ざけています。</span></p>
+            </div>
+
+            <p style="margin-bottom:30px;">
+                でも、大丈夫。<br>
+                <strong>正しいやり方を知れば、御社の採用は必ず変わります。</strong><br>
+                岐阜県の中小企業専門、リクルートMVP受賞のプロライター在籍。<br>
+                <strong>岐阜採用のミカタ</strong>が、御社の採用を「言葉の力」で変えます。
+            </p>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section id="contact" class="cta-section">
+        <div class="container">
+            <h2 class="section-title">最後に</h2>
+            <p style="margin-bottom:30px;">
+                採用にお悩みなら、まずは無料相談から。<br>
+                現状をお聞かせいただければ、最適な改善策をご提案します。<br><br>
+                <strong>行動するのは、今すぐこのボタンをクリックするだけ。</strong>
+            </p>
+            
+            <div style="display:flex; flex-direction:column; align-items:center;">
+                <!-- 指示1: リンク追加（最後） -->
+                <a href="https://app.aitemasu.me/u/info278/gifusaiyo" class="cta-button cta-pulse">【無料相談に申し込む】</a>
+                <p style="font-size:0.8rem; margin-top:15px; opacity:0.9;">
+                    ※相談だけでも大歓迎。しつこい営業は一切ありません。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 岐阜採用のミカタ All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Sticky CTA for Mobile -->
+    <div class="sticky-cta">
+        <!-- 指示1: リンク追加（スマホ追従） -->
+        <a href="https://app.aitemasu.me/u/info278/gifusaiyo" class="cta-button">【無料相談に申し込む】</a>
+    </div>
+
+</body>
+</html>
