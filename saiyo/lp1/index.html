@@ -16,12 +16,12 @@
             --primary-color: #E87A2E; /* 指定のオレンジ（維持） */
             --primary-hover: #D3651B;
             
-            /* 【変更】危機感・緊急性を演出するカラーパレット */
-            --text-color: #111111; /* より濃い黒 */
-            --bg-dark: #1a1a1a;    /* 深刻さを表すダークグレー */
+            /* 危機感・緊急性を演出するカラーパレット */
+            --text-color: #111111;
+            --bg-dark: #1a1a1a;
             --bg-white: #FFFFFF;
-            --alert-red: #D60000;  /* 警告・赤字用 */
-            --warning-yellow: #FFEA00; /* 黒背景用・警戒色 */
+            --alert-red: #D60000;
+            --warning-yellow: #FFEA00;
             --font-main: 'Noto Sans JP', sans-serif;
         }
 
@@ -71,14 +71,12 @@
             .pc-br { display: block; }
         }
 
-        /* 蛍光ペン風（緊急性重視で赤や黄色に変更） */
         .highlight {
             background: linear-gradient(transparent 60%, var(--warning-yellow) 60%);
             font-weight: bold;
             color: #000;
         }
         
-        /* ネガティブ強調用 */
         .highlight-alert {
             background: rgba(214, 0, 0, 0.1);
             color: var(--alert-red);
@@ -100,7 +98,7 @@
             width: 100%;
             max-width: 400px;
             text-align: center;
-            border: 3px solid #fff; /* 枠線を太くして目立たせる */
+            border: 3px solid #fff;
             position: relative;
             overflow: hidden;
         }
@@ -117,7 +115,7 @@
             font-weight: 700;
             margin-bottom: 0.5rem;
             color: var(--primary-color);
-            background: #fff; /* ラベルを目立たせる */
+            background: #fff;
             padding: 2px 10px;
             border-radius: 20px;
             display: inline-block;
@@ -137,12 +135,12 @@
         header {
             padding: 15px 0;
             background: #fff;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* 影を少し濃く */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            border-bottom: 3px solid var(--primary-color); /* アクセントライン追加 */
+            border-bottom: 3px solid var(--primary-color);
         }
         .header-logo {
             font-weight: 900;
@@ -163,7 +161,6 @@
         /* --- Hero (First View) --- */
         .hero {
             margin-top: 60px;
-            /* 画像指定 */
             background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8)), url('https://i.gyazo.com/f2da1c0c6df0d4a251205700ab4cb824.png');
             background-size: cover;
             background-position: center;
@@ -186,7 +183,6 @@
             text-shadow: 2px 2px 0 #fff;
         }
         
-        /* キャッチコピーの「危機感」演出 */
         .hero-copy span.neg-highlight {
             color: var(--alert-red);
             background: linear-gradient(transparent 70%, rgba(0,0,0,0.1) 70%);
@@ -212,18 +208,18 @@
             border-radius: 10px;
             display: inline-block;
             box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-            border: 2px solid var(--primary-color); /* 枠線で強調 */
+            border: 2px solid var(--primary-color);
         }
 
         .hero-guarantee {
             font-size: 0.9rem;
             color: #fff;
-            background: #000; /* 黒帯で引き締め */
+            background: #000;
             padding: 2px 10px;
             font-weight: bold;
             display: inline-block;
             margin-bottom: 15px;
-            transform: skew(-10deg); /* 勢いをつける */
+            transform: skew(-10deg);
         }
         
         .hero-note {
@@ -237,7 +233,6 @@
             .hero { 
                 padding: 140px 0 120px; 
                 text-align: left; 
-                /* PC向け: コントラスト強めのグラデーション */
                 background-image: linear-gradient(90deg, rgba(255, 255, 255, 1) 45%, rgba(255, 255, 255, 0.7) 80%, rgba(255, 255, 255, 0) 100%), url('https://i.gyazo.com/f2da1c0c6df0d4a251205700ab4cb824.png');
             }
             .hero-content { text-align: left; max-width: 680px; }
@@ -271,33 +266,32 @@
             background-color: var(--primary-color);
         }
 
-        /* --- Problem (Dark Mode for Impact) --- */
+        /* --- Problem --- */
         .problem {
-            background-color: var(--bg-dark); /* 背景を黒くして深刻さを演出 */
+            background-color: var(--bg-dark);
             color: #fff;
         }
         .problem .section-title {
             color: #fff;
         }
         .problem .section-title::after {
-            background-color: var(--alert-red); /* 赤ラインで警告 */
+            background-color: var(--alert-red);
         }
 
         .problem-box {
-            background: #2a2a2a; /* 背景色に合わせて暗く */
+            background: #2a2a2a;
             border: 1px solid #444;
             border-radius: 10px;
             padding: 30px;
             margin-bottom: 30px;
         }
         
-        /* 悩み箇所の強調 */
         .problem-lead {
             font-weight: bold; 
             margin-bottom: 20px; 
             text-align: center; 
             font-size: 1.2rem;
-            color: var(--warning-yellow); /* 黄色文字で注意喚起 */
+            color: var(--warning-yellow);
         }
 
         .check-list li {
@@ -308,7 +302,7 @@
             font-weight: 500;
         }
         .check-list li::before {
-            content: '✖'; /* チェックではなくバツで問題意識を刺激 */
+            content: '✖';
             position: absolute;
             left: 0;
             color: var(--alert-red);
@@ -317,7 +311,7 @@
         }
         
         .problem-stat {
-            background: var(--alert-red); /* 赤背景で緊急事態を演出 */
+            background: var(--alert-red);
             color: #fff;
             padding: 25px;
             text-align: center;
@@ -335,21 +329,21 @@
             font-weight: bold;
         }
 
-        /* --- Agitate (White & Red) --- */
+        /* --- Agitate --- */
         .agitate {
             background-color: #fff;
-            border-bottom: 10px solid var(--bg-dark); /* 区切りを明確に */
+            border-bottom: 10px solid var(--bg-dark);
         }
         .agitate .section-title {
             color: #000;
         }
         
         .agitate-box {
-            border: 3px solid var(--alert-red); /* 赤枠で警告 */
+            border: 3px solid var(--alert-red);
             padding: 30px;
             border-radius: 10px;
             text-align: center;
-            background: #fffafa; /* うっすら赤み */
+            background: #fffafa;
         }
         
         .bad-example {
@@ -380,7 +374,7 @@
             font-weight: bold;
         }
 
-        /* --- Solution (Orange & White - Hope) --- */
+        /* --- Solution --- */
         .solution {
             background-color: #f9f9f9;
         }
@@ -395,7 +389,7 @@
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            border-top: 5px solid var(--primary-color); /* オレンジで解決策らしさ */
+            border-top: 5px solid var(--primary-color);
         }
         .feature-num {
             color: var(--primary-color);
@@ -430,7 +424,7 @@
             text-align: center;
         }
         .comparison-table th {
-            background-color: #333; /* ヘッダーを黒に */
+            background-color: #333;
             color: #fff;
             font-weight: bold;
         }
@@ -466,6 +460,18 @@
             padding: 20px;
             background: #fff;
         }
+        
+        /* 修正：画像サイズをさらに80%に縮小（160px -> 128px） */
+        .case-image-mini {
+            width: 100%;
+            max-width: 128px; /* 横幅を128pxに制限 */
+            height: auto;
+            border-radius: 5px;
+            border: 1px solid #eee;
+            margin: 15px auto 0 auto; /* 上に余白、中央揃え */
+            display: block;
+        }
+
         .case-before, .case-after {
             padding: 15px;
             margin-bottom: 10px;
@@ -511,7 +517,7 @@
         /* --- Offer --- */
         .offer {
             background: #fff;
-            border: 4px solid var(--alert-red); /* 赤枠で緊急オファー感 */
+            border: 4px solid var(--alert-red);
             border-radius: 15px;
             padding: 50px 20px;
             text-align: center;
@@ -556,18 +562,37 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
         .cta-section .cta-label {
-            color: var(--alert-red); /* 返金保証を赤文字で強調 */
+            color: var(--alert-red);
             background: #fff;
             padding: 5px 15px;
         }
 
-        /* --- PS --- */
+        /* --- PS (Video Layout) --- */
         .ps-section {
             background: #f0f0f0;
         }
+        .ps-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
         .ps-content {
-            max-width: 700px;
-            margin: 0 auto;
+            width: 100%;
+        }
+        
+        .ps-video-container {
+            width: 100%;
+            max-width: 180px;
+            margin-top: 10px;
+        }
+        
+        .profile-video {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            display: block;
         }
         .signature {
             margin-top: 30px;
@@ -577,6 +602,23 @@
             border-bottom: 1px solid #999;
             display: inline-block;
             float: right;
+        }
+
+        @media (min-width: 768px) {
+            .ps-wrapper {
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+            }
+            .ps-content {
+                flex: 1;
+                max-width: 600px;
+            }
+            .ps-video-container {
+                flex: 0 0 180px;
+                margin-top: 0;
+                margin-left: 30px;
+            }
         }
 
         /* --- Footer --- */
@@ -639,7 +681,7 @@
                 </p>
                 <div class="hero-cta-wrapper">
                     <span class="hero-guarantee">＼ 成果が出なければ全額返金 ／</span>
-                    <a href="#contact" class="cta-button cta-pulse">【無料相談に申し込む】</a>
+                    <a href="https://app.aitemasu.me/u/info278/gifusaiyo" class="cta-button cta-pulse">【無料相談に申し込む】</a>
                     <p class="hero-note text-center">※まずは30分、現状の課題をお聞かせください</p>
                 </div>
             </div>
@@ -770,6 +812,8 @@
                     <div class="case-after">
                         <strong>After：</strong>ペルソナを明確化した求人票にリライト。たった1万円の広告費・閲覧数100件で3名応募。2名が半年以上定着し、離職率も改善。
                     </div>
+                    <!-- 配置場所：Afterの後ろ -->
+                    <img src="https://i.gyazo.com/726eefe11fc6e565ff6d12bc4bf667de.png" alt="介護施設A社の実績グラフ" class="case-image-mini">
                 </div>
             </div>
 
@@ -783,6 +827,8 @@
                     <div class="case-after">
                         <strong>After：</strong>岐阜採用のミカタで広告費4分の1以下に。Instagram・Noteで会社の魅力を発信し、「この会社で働きたい」という問い合わせが自然と増加。
                     </div>
+                    <!-- 配置場所：Afterの後ろ -->
+                    <img src="https://i.gyazo.com/c60d6c88bb33901165cf1af0ff2c14e9.png" alt="施工会社B社の実績グラフ" class="case-image-mini">
                 </div>
             </div>
 
@@ -830,7 +876,7 @@
             
             <div style="display:flex; flex-direction:column; align-items:center;">
                 <span class="cta-label">＼ 成果が出なければ全額返金 ／</span>
-                <a href="#" class="cta-button cta-pulse">【今すぐ無料相談に申し込む】</a>
+                <a href="https://app.aitemasu.me/u/info278/gifusaiyo" class="cta-button cta-pulse">【今すぐ無料相談に申し込む】</a>
                 <p style="font-size:0.8rem; margin-top:15px; opacity:0.9;">
                     ※ご相談は30分程度です ※無理な営業は一切いたしません ※岐阜県内の中小企業様限定
                 </p>
@@ -841,18 +887,26 @@
     <!-- PS -->
     <section class="ps-section">
         <div class="container">
-            <div class="ps-content">
-                <h2 style="font-size:1.4rem; margin-bottom:20px;">最後に、代表の伊藤からひとこと。</h2>
-                <p>「人が集まらない」</p>
-                <p>岐阜県内の中小企業経営者の方から、何度この言葉を聞いたかわかりません。</p>
-                <br>
-                <p>私は、この課題を解決するために採用マーケティングを研究し、海外展開も経験する中で確信しました。</p>
-                <p class="text-bold text-primary" style="font-size:1.2rem; margin:20px 0;">「広告費をかけなくても、採用はできる」</p>
-                <p>必要なのは、御社の魅力を「言葉の力」で伝えること。</p>
-                <p>リクルートMVPを受賞したプロライターとともに、御社の採用を全力でサポートします。</p>
-                <p>まずは無料相談で、お話を聞かせてください。</p>
-                <div class="signature">
-                    岐阜採用のミカタ 代表 伊藤
+            <div class="ps-wrapper">
+                <div class="ps-content">
+                    <h2 style="font-size:1.4rem; margin-bottom:20px;">最後に、代表の伊藤からひとこと。</h2>
+                    <p>「人が集まらない」</p>
+                    <p>岐阜県内の中小企業経営者の方から、何度この言葉を聞いたかわかりません。</p>
+                    <br>
+                    <p>私は、この課題を解決するために採用マーケティングを研究し、海外展開も経験する中で確信しました。</p>
+                    <p class="text-bold text-primary" style="font-size:1.2rem; margin:20px 0;">「広告費をかけなくても、採用はできる」</p>
+                    <p>必要なのは、御社の魅力を「言葉の力」で伝えること。</p>
+                    <p>リクルートMVPを受賞したプロライターとともに、御社の採用を全力でサポートします。</p>
+                    <p>まずは無料相談で、お話を聞かせてください。</p>
+                    <div class="signature">
+                        岐阜採用のミカタ 代表 伊藤
+                    </div>
+                </div>
+                <div class="ps-video-container">
+                    <video class="profile-video" autoplay loop muted playsinline>
+                        <source src="https://pub-01c77f2b8a694685b04879178cd9e6f2.r2.dev/profile-laptap.mp4" type="video/mp4">
+                        お使いのブラウザは動画タグをサポートしていません。
+                    </video>
                 </div>
             </div>
         </div>
@@ -867,7 +921,7 @@
     <!-- Sticky CTA for Mobile -->
     <div class="sticky-cta">
         <span class="cta-label" style="font-size:0.7rem; margin-bottom:5px;">＼ 成果が出なければ全額返金 ／</span>
-        <a href="#contact" class="cta-button">【無料相談に申し込む】</a>
+        <a href="https://app.aitemasu.me/u/info278/gifusaiyo" class="cta-button">【無料相談に申し込む】</a>
     </div>
 
 </body>
