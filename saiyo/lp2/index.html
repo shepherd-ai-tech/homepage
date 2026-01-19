@@ -13,10 +13,10 @@
     <style>
         /* --- Reset & Base Styles --- */
         :root {
-            --primary-color: #E87A2E; /* キーカラー：オレンジ（維持） */
+            --primary-color: #E87A2E; /* キーカラー：オレンジ */
             --primary-hover: #D3651B;
-            --danger-color: #D93025; /* 新規：警告の赤（危機感） */
-            --dark-color: #1a1a1a;   /* 新規：引き締める黒 */
+            --danger-color: #D93025; /* 警告の赤 */
+            --dark-color: #1a1a1a;   /* 引き締める黒 */
             --text-color: #111111;   /* 真っ黒に近い文字色 */
             --bg-gray: #F0F0F0;      /* 無機質なグレー背景 */
             --bg-white: #FFFFFF;
@@ -59,9 +59,9 @@
         .text-center { text-align: center; }
         .text-left { text-align: left; }
         .text-primary { color: var(--primary-color); }
-        .text-danger { color: var(--danger-color); } /* 赤文字用クラス */
+        .text-danger { color: var(--danger-color); }
         .text-bold { font-weight: 700; }
-        .bg-gray { background-color: var(--bg-gray); } /* クリーム色をグレーに変更 */
+        .bg-gray { background-color: var(--bg-gray); }
         .sp-br { display: block; }
         .pc-br { display: none; }
         
@@ -70,10 +70,8 @@
             .pc-br { display: block; }
         }
 
-        /* ハイライトを黄色から「赤のアンダーライン」や「黒背景」的な強さに変更してもよいが、
-           ここでは「緊急性」を出すため、あえて蛍光ペン風ではなく強い強調にする */
         .highlight {
-            background: linear-gradient(transparent 60%, #ffeb3b 60%); /* 黄色は維持しつつ */
+            background: linear-gradient(transparent 60%, #ffeb3b 60%);
             font-weight: 900;
             color: #000;
         }
@@ -94,7 +92,6 @@
             font-size: 1.2rem;
             padding: 1.2rem 2rem;
             border-radius: 50px;
-            /* 影を濃くして浮き立たせる */
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
             width: 100%;
@@ -117,14 +114,13 @@
             font-size: 0.9rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
-            color: var(--dark-color); /* ラベルを黒にして視認性を高める */
-            background: #ffeb3b; /* 警告色の黄色背景 */
+            color: var(--dark-color);
+            background: #ffeb3b;
             padding: 2px 10px;
             border-radius: 4px;
             display: inline-block;
         }
 
-        /* Button Pulse Animation */
         .cta-pulse {
             animation: pulse 2s infinite;
         }
@@ -139,13 +135,12 @@
         header {
             padding: 15px 0;
             background: #fff;
-            /* 影を鋭くして硬い印象に */
             box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            border-top: 5px solid var(--primary-color); /* 上部にオレンジライン */
+            border-top: 5px solid var(--primary-color);
         }
         .header-logo {
             font-weight: 900;
@@ -165,7 +160,6 @@
         /* --- Hero (First View) --- */
         .hero {
             margin-top: 60px;
-            /* 背景画像のオーバーレイを少し暗くして、シリアスさを出す */
             background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.6)), url('https://i.gyazo.com/f2da1c0c6df0d4a251205700ab4cb824.png');
             background-size: cover;
             background-position: center;
@@ -188,12 +182,11 @@
             text-shadow: 0 0 20px rgba(255,255,255,1);
         }
         
-        /* 変更点：キャッチコピーの強調を「赤」に変更して危機感を煽る */
         .hero-copy span {
             color: var(--danger-color); 
             display: block;
             margin-top: 5px;
-            background: rgba(255,255,255,0.8); /* 読みやすさ確保 */
+            background: rgba(255,255,255,0.8);
         }
 
         .hero-sub {
@@ -205,7 +198,6 @@
             padding: 15px;
             border-radius: 5px;
             max-width: 600px;
-            /* 枠線をつけて情報の重要度を上げる */
             border-left: 5px solid var(--primary-color);
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
@@ -215,7 +207,6 @@
             padding: 25px;
             border-radius: 10px;
             display: inline-block;
-            /* 影を強く */
             box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
             border: 1px solid #ddd;
         }
@@ -226,7 +217,7 @@
             font-weight: 900;
             display: block;
             margin-bottom: 10px;
-            background: #ffeb3b; /* 注意を引く黄色 */
+            background: #ffeb3b;
             display: inline-block;
             padding: 2px 8px;
         }
@@ -242,7 +233,6 @@
             .hero { 
                 padding: 140px 0 120px; 
                 text-align: left; 
-                /* PC向け: 右側の写真を活かしつつ、左側をしっかり読ませるコントラスト */
                 background-image: linear-gradient(90deg, rgba(255, 255, 255, 1) 40%, rgba(255, 255, 255, 0.7) 70%, rgba(255, 255, 255, 0) 100%), url('https://i.gyazo.com/f2da1c0c6df0d4a251205700ab4cb824.png');
                 background-position: center;
             }
@@ -267,7 +257,6 @@
             color: var(--dark-color);
         }
         
-        /* タイトル下の線をオレンジに維持しつつ、太くして力強さを出す */
         .section-title::after {
             content: '';
             position: absolute;
@@ -288,29 +277,57 @@
 
         .story-box {
             padding: 30px;
-            border-radius: 8px; /* 丸みを減らしてシリアスに */
+            border-radius: 8px;
             margin-bottom: 40px;
+            /* 修正点：overflow:hiddenを削除し、clearfixでフロート解除を行う */
+        }
+        
+        /* フロート解除用 */
+        .story-box::after {
+            content: "";
+            display: block;
+            clear: both;
         }
 
-        /* Aさん（失敗）: 淀んだグレーで停滞感を表現 */
+        /* 画像スタイルの変更：右側に小さく配置して馴染ませる */
+        .story-image {
+            width: 30%; /* 指示：今の30%くらいに */
+            max-width: 250px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            float: right; /* テキストを左側に回り込ませる */
+            margin: 0 0 15px 20px; /* 左と下に余白 */
+        }
+        
+        /* スマホで小さすぎないように調整 */
+        @media (max-width: 480px) {
+            .story-image {
+                width: 35%; 
+                margin-left: 15px;
+            }
+        }
+
+        /* Aさん（失敗） */
         .story-a {
             background-color: #e0e0e0;
             border-left: 8px solid #555;
             color: #444;
         }
 
-        /* Bさん（成功）: 白背景に強い影で浮き立たせる */
+        /* Bさん（成功） */
         .story-b {
             background-color: #fff;
             border: 2px solid var(--primary-color);
             box-shadow: 0 10px 20px rgba(232, 122, 46, 0.15);
             position: relative;
         }
-        /* Bさんには「正解」のバッジをつけるイメージ */
+        
+        /* 正解ルートバッジ */
         .story-b::before {
             content: '正解ルート';
             position: absolute;
-            top: -15px;
+            top: -15px; /* ここが隠れないようにoverflow:hiddenを削除しました */
             left: 20px;
             background: var(--primary-color);
             color: #fff;
@@ -318,20 +335,23 @@
             font-weight: bold;
             font-size: 0.9rem;
             border-radius: 20px;
+            z-index: 10;
         }
 
         .story-title {
             font-size: 1.4rem;
             font-weight: 900;
             margin-bottom: 20px;
+            clear: both; /* タイトルは回り込まない */
         }
-
+        
         .story-stat-box {
             background: #fff;
             padding: 20px;
             border-radius: 4px;
             margin-top: 20px;
             border: 1px solid #ccc;
+            clear: both; /* 統計ボックスは画像の回り込みを解除して下に表示 */
         }
 
         .story-stat-box h4 {
@@ -355,9 +375,10 @@
             font-style: italic;
             color: #555;
             margin-top: 20px;
-            background: rgba(0,0,0,0.05); /* 少し暗く */
+            background: rgba(0,0,0,0.05);
             padding: 15px;
             border-left: 4px solid #999;
+            clear: both;
         }
 
         /* --- Comparison Table --- */
@@ -384,14 +405,14 @@
             width: 35%;
         }
         .comparison-table td:nth-child(2) {
-            background-color: #f2f2f2; /* Aさん列はグレー */
+            background-color: #f2f2f2;
             color: #666;
         }
         .comparison-table td:nth-child(3) {
-            background-color: #fff; /* Bさん列は白 */
+            background-color: #fff;
             font-weight: bold;
             color: var(--primary-color);
-            border: 2px solid var(--primary-color); /* 枠線で強調 */
+            border: 2px solid var(--primary-color);
             border-top: none; 
             border-bottom: none;
         }
@@ -413,7 +434,7 @@
 
         /* --- Analysis --- */
         .analysis {
-            background-color: var(--bg-gray); /* 背景をグレーにして分析的な印象に */
+            background-color: var(--bg-gray);
         }
         .analysis-box {
             background: #fff;
@@ -427,7 +448,7 @@
             position: relative;
             padding-left: 25px;
             margin-bottom: 10px;
-            color: var(--danger-color); /* 悪い例は赤文字系で */
+            color: var(--danger-color);
             font-weight: bold;
         }
         .list-bad li::before {
@@ -501,7 +522,7 @@
             position: relative;
             margin-bottom: 30px;
             box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-            border-left: 5px solid var(--primary-color); /* 左にオレンジライン */
+            border-left: 5px solid var(--primary-color);
         }
         .testimonial::before {
             content: '“';
@@ -526,7 +547,7 @@
             border-top: 1px solid #eee;
         }
         .check-box {
-            border: 4px solid #333; /* 枠を黒く太くして「診断書」っぽく */
+            border: 4px solid #333;
             border-radius: 5px;
             padding: 30px;
             margin-bottom: 30px;
@@ -575,7 +596,7 @@
             top: -25px;
             left: 50%;
             transform: translateX(-50%);
-            background: var(--danger-color); /* 赤バッジで注目 */
+            background: var(--danger-color);
             color: #fff;
             padding: 10px 30px;
             border-radius: 30px;
@@ -586,7 +607,7 @@
 
         /* --- CTA Section --- */
         .cta-section {
-            background-color: var(--dark-color); /* 背景を黒にして締めくくる */
+            background-color: var(--dark-color);
             color: #fff;
             text-align: center;
             padding: 80px 0;
@@ -616,7 +637,6 @@
         .future-box h4 { font-size: 1.2rem; margin-bottom: 10px; border-bottom: 1px solid #555; padding-bottom: 5px; color: #aaa;}
         .future-box ul { padding-left: 20px; color: #ccc; }
         
-        /* Bさんの未来ボックスを目立たせる */
         .future-box-good {
             background: rgba(232, 122, 46, 0.1);
             border: 2px solid var(--primary-color);
@@ -625,7 +645,7 @@
         .future-box-good ul { color: #fff; font-weight: bold; }
 
         .cta-section .cta-button {
-            background-color: var(--primary-color); /* ここはオレンジで誘導 */
+            background-color: var(--primary-color);
             color: #fff;
             border: 2px solid #fff;
             box-shadow: 0 0 20px rgba(232, 122, 46, 0.5);
@@ -635,14 +655,50 @@
             background: #ffeb3b;
         }
 
-        /* --- PS --- */
+        /* --- PS Section (Video Profile) --- */
         .ps-section {
             background: #fff;
         }
         .ps-content {
-            max-width: 700px;
+            max-width: 800px;
             margin: 0 auto;
         }
+        .ps-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        .ps-text-col {
+            flex: 1;
+        }
+        
+        /* Video Container Styles - サイズを70%に調整 (元の300px * 0.7 = 210px) */
+        .ps-video-col {
+            flex: 0 0 210px; /* 指示：70% (210px) */
+            width: 100%;
+            max-width: 210px;
+            margin: 0 auto;
+        }
+        .ps-video {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            display: block;
+        }
+        
+        @media (min-width: 768px) {
+            .ps-wrapper {
+                flex-direction: row;
+                align-items: flex-start;
+                justify-content: space-between;
+            }
+            .ps-video-col {
+                margin: 0;
+            }
+        }
+
         .signature {
             margin-top: 30px;
             text-align: right;
@@ -711,7 +767,7 @@
                 </p>
                 <div class="hero-cta-wrapper">
                     <span class="hero-guarantee">＼ あなたはどちらのタイプ？ ／</span>
-                    <a href="#contact" class="cta-button cta-pulse">【無料診断＆相談に申し込む】</a>
+                    <a href="https://app.aitemasu.me/u/info278/gifusaiyo" class="cta-button cta-pulse">【無料診断＆相談に申し込む】</a>
                     <p class="hero-note">※30秒で診断 → その場で改善策をご提案</p>
                 </div>
             </div>
@@ -736,6 +792,10 @@
             <!-- Story A -->
             <div class="story-box story-a">
                 <h3 class="story-title">Aさん：「広告費を増やせば、人は来る」と信じた社長</h3>
+                
+                <!-- Aさん画像 -->
+                <img src="https://i.gyazo.com/73effb5edf3f6afa72e504b8f078db33.png" alt="悩む経営者Aさん" class="story-image">
+
                 <p>Aさんは、代理店の言う通りにしました。<br>
                 「もっと広告費を増やしましょう」「掲載期間を延ばしましょう」「複数媒体に出しましょう」<br>
                 言われるがまま、毎月の広告費は20万円、30万円と膨らんでいきました。</p>
@@ -766,6 +826,10 @@
             <!-- Story B -->
             <div class="story-box story-b">
                 <h3 class="story-title text-primary">Bさん：「言葉を変えれば、人は来る」と気づいた社長</h3>
+                
+                <!-- Bさん画像 -->
+                <img src="https://i.gyazo.com/7cb4f8270d487b39127300a2e5281048.png" alt="成功した経営者Bさん" class="story-image">
+
                 <p>Bさんも最初は同じでした。<br>
                 代理店に任せ、広告費を増やし、それでも人が来ない日々。<br>
                 「このままでは会社が持たない」<br>
@@ -1072,7 +1136,7 @@
             
             <div style="display:flex; flex-direction:column; align-items:center;">
                 <span class="cta-label">＼ Bさんの道を選ぶ ／</span>
-                <a href="#" class="cta-button cta-pulse">【今すぐ無料相談に申し込む】</a>
+                <a href="https://app.aitemasu.me/u/info278/gifusaiyo" class="cta-button cta-pulse">【今すぐ無料相談に申し込む】</a>
                 <p style="font-size:0.8rem; margin-top:15px; opacity:0.9;">
                     ※ご相談は30分程度です ※無理な営業は一切いたしません<br>
                     ※岐阜県内の中小企業様限定 ※成果が出なければ全額返金
@@ -1086,18 +1150,31 @@
         <div class="container">
             <div class="ps-content">
                 <h2 style="font-size:1.4rem; margin-bottom:20px;">最後に、1つだけお伝えしたいことがあります。</h2>
-                <p>AさんとBさんの違いは、能力でも運でもありません。</p>
-                <p class="text-bold text-primary" style="font-size:1.2rem; margin:20px 0;">「正しい方法を知っていたかどうか」</p>
-                <p>それだけです。</p>
-                <p>「広告費を増やせば人が来る」という常識は、もう古い。<br>
-                これからは「言葉の力」で人を集める時代です。</p>
-                <br>
-                <p>私たち岐阜採用のミカタは、リクルートMVP受賞のプロライターとともに、御社の採用を全力でサポートします。</p>
-                <p>1年後、「あの時、無料相談に申し込んでよかった」と思っていただける自信があります。</p>
-                <p>まずは30分、お話を聞かせてください。</p>
-                <div class="signature">
-                    岐阜採用のミカタ 代表 伊藤
+                
+                <div class="ps-wrapper">
+                    <div class="ps-text-col">
+                        <p>AさんとBさんの違いは、能力でも運でもありません。</p>
+                        <p class="text-bold text-primary" style="font-size:1.2rem; margin:20px 0;">「正しい方法を知っていたかどうか」</p>
+                        <p>それだけです。</p>
+                        <p>「広告費を増やせば人が来る」という常識は、もう古い。<br>
+                        これからは「言葉の力」で人を集める時代です。</p>
+                        <br>
+                        <p>私たち岐阜採用のミカタは、リクルートMVP受賞のプロライターとともに、御社の採用を全力でサポートします。</p>
+                        <p>1年後、「あの時、無料相談に申し込んでよかった」と思っていただける自信があります。</p>
+                        <p>まずは30分、お話を聞かせてください。</p>
+                        <div class="signature">
+                            岐阜採用のミカタ 代表 伊藤
+                        </div>
+                    </div>
+                    
+                    <div class="ps-video-col">
+                        <video class="ps-video" autoplay loop muted playsinline>
+                            <source src="https://pub-01c77f2b8a694685b04879178cd9e6f2.r2.dev/profile-laptap.mp4" type="video/mp4">
+                            お使いのブラウザは動画タグに対応していません。
+                        </video>
+                    </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -1106,7 +1183,7 @@
         <div class="container">
             <p>＼ あなたはどちらの未来を選びますか？ ／</p>
             <div style="margin:20px 0;">
-                <a href="#contact" class="cta-button" style="font-size:1rem; padding:10px 20px;">【無料相談に申し込む】</a>
+                <a href="https://app.aitemasu.me/u/info278/gifusaiyo" class="cta-button" style="font-size:1rem; padding:10px 20px;">【無料相談に申し込む】</a>
             </div>
             <p>&copy; 岐阜採用のミカタ All Rights Reserved.</p>
         </div>
@@ -1114,7 +1191,7 @@
 
     <!-- Sticky CTA for Mobile -->
     <div class="sticky-cta">
-        <a href="#contact" class="cta-button">【無料相談に申し込む】</a>
+        <a href="https://app.aitemasu.me/u/info278/gifusaiyo" class="cta-button">【無料相談に申し込む】</a>
     </div>
 
 </body>
