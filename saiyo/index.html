@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>岐阜採用のミカタ | 株式会社Shepherd</title>
+    <title>岐阜採用支援 人なり。 | 株式会社Shepherd</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -150,7 +150,7 @@
             .logo { font-size: 1.1rem; }
         }
 
-        /* --- ヒーローセクション --- */
+        /* --- ヒーローセクション（動画背景） --- */
         .hero {
             position: relative;
             min-height: 100vh; 
@@ -161,26 +161,24 @@
             overflow: hidden;
             background-color: #333;
         }
-        .hero-bg {
+        
+        /* 背景動画 */
+        .hero video {
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: url('https://i.gyazo.com/f79997d0a85c4e104cca4f334a4a229e.png') center/cover no-repeat;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             opacity: 0.7;
-            animation: bgZoom 20s infinite alternate;
-        }
-        @keyframes bgZoom { 0% { transform: scale(1); } 100% { transform: scale(1.1); } }
-
-        /* スマホ向けの背景調整 */
-        @media (max-width: 768px) {
-            .hero-bg {
-                background-position: center 30%; 
-            }
+            z-index: 0;
         }
 
         .hero-overlay {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(to bottom, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 60%, rgba(255,255,255,0.4) 100%);
+            z-index: 1;
         }
         .hero-content {
             position: relative;
@@ -419,8 +417,8 @@
         }
         .reason-image-container img {
             width: 100%;
-            height: 100%; /* コンテナいっぱいに広げる */
-            object-fit: cover; /* 比率を保ちつつトリミングして埋める */
+            height: 100%; 
+            object-fit: cover; 
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
@@ -453,7 +451,6 @@
         }
         .rep-img-box { flex: 0 0 300px; width: 100%; }
         
-        /* ★画像スタイルを動画にも適用★ */
         .rep-img-box img, .rep-img-box video {
             width: 100%;
             height: auto;
@@ -506,27 +503,14 @@
         .anim-up { opacity: 0; transform: translateY(20px); transition: 0.8s; }
         .anim-up.active { opacity: 1; transform: translateY(0); }
     </style>
-
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-PBR4R8B9');</script>
-    <!-- End Google Tag Manager -->
-
 </head>
 <body>
-
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PBR4R8B9"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
 
     <!-- ヘッダー -->
     <header>
         <div class="header-inner">
-            <div class="logo"><span>●</span>岐阜採用のミカタ</div>
+            <!-- 変更: サイト名 -->
+            <div class="logo"><span>●</span>岐阜採用支援 人なり。</div>
             <nav>
                 <ul>
                     <li><a href="#service">サービス</a></li>
@@ -540,7 +524,7 @@
 
     <!-- ファーストビュー -->
     <section class="hero">
-        <div class="hero-bg"></div>
+        <video src="https://pub-01c77f2b8a694685b04879178cd9e6f2.r2.dev/saiyo-top-movie.mp4" autoplay loop muted playsinline></video>
         <div class="hero-overlay"></div>
         <div class="hero-content">
             
@@ -611,7 +595,8 @@
                         はじめまして。岐阜県可児市在住の伊藤です。<br><br>
                         「人が集まらない」という中小企業の切実な声を聞くたび、何とかできないかと採用マーケティングの研究を始めました。<br>
                         そして、<strong class="text-primary">リクルートでMVPを受賞した求人広告のプロライター</strong>がチームに加わったことで、私たちの支援は進化しました。<br><br>
-                        私たち「岐阜採用のミカタ」は、テンプレートの使い回しはしません。<br>
+                        <!-- 変更: サイト名 -->
+                        私たち「岐阜採用支援 人なり。」は、テンプレートの使い回しはしません。<br>
                         御社の想い、働く人の魅力を丁寧に掘り起こし、求職者の心に届く言葉に変換します。<br><br>
                         「知名度がなくても、応募者は増やせる」<br>
                         これが、私たちが岐阜の経営者にお届けしたい"採用の新常識"です。
@@ -750,7 +735,8 @@
     <!-- セクション4：選ばれる理由 -->
     <section class="section-padding">
         <div class="container anim-up">
-            <h2 class="section-title">なぜ、「岐阜採用のミカタ」が<br class="sp-only">選ばれるのか？</h2>
+            <!-- 変更: サイト名 -->
+            <h2 class="section-title">なぜ、「岐阜採用支援 人なり。」が<br class="sp-only">選ばれるのか？</h2>
             
             <div class="reason-grid">
                 <div class="reason-card">
@@ -775,7 +761,7 @@
                 </div>
                 
                 <div class="reason-image-container">
-                    <img src="https://i.gyazo.com/933beeac8cf1884ff52d395e377fd54a.png" alt="岐阜採用のミカタ イメージ">
+                    <img src="https://i.gyazo.com/933beeac8cf1884ff52d395e377fd54a.png" alt="岐阜採用支援 人なり。 イメージ">
                 </div>
             </div>
         </div>
@@ -808,7 +794,7 @@
         </div>
     </section>
 
-    <!-- セクション6：代表挨拶（画像→動画差し替え済み） -->
+    <!-- セクション6：代表挨拶 -->
     <section id="representative" class="section-padding">
         <div class="container anim-up">
             <h2 class="section-title">代表挨拶</h2>
@@ -822,7 +808,9 @@
                         企業は、人なり。
                     </div>
                     <p>
-                        はじめまして。「岐阜採用のミカタ」代表の伊藤です。<br>
+                        <!-- 変更: サイト名 -->
+                        はじめまして。「岐阜採用支援 人なり。」代表の伊藤です。<br>
+                        <!-- 変更: プロフィール文章 -->
                         愛知県春日井市に生まれ、可児市に移り住み、この地域の多くの企業様に育てていただきました。<br><br>
                         <strong>「企業は、人なり。」</strong><br>
                         どれだけ優れた商品があっても、それを動かすのは"人"です。<br>
@@ -890,7 +878,8 @@
         <div class="container">
             <p style="color: #fff; font-weight: bold; margin-bottom: 10px;">株式会社Shepherd</p>
             <p>対応エリア：岐阜県可児市・多治見市・美濃加茂市を中心に、岐阜県内周辺</p>
-            <p style="margin-top: 20px;">&copy; 2023 岐阜採用のミカタ All Rights Reserved.</p>
+            <!-- 変更: サイト名 -->
+            <p style="margin-top: 20px;">&copy; 2023 岐阜採用支援 人なり。 All Rights Reserved.</p>
         </div>
     </footer>
 
